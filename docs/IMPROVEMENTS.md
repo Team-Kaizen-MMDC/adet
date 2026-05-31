@@ -28,6 +28,8 @@ This document summarizes the main improvements made to the blockchain notebook w
 - Added project-specific GitHub skill docs under [`.github/skills/`](../.github/skills/).
 - Added [/.env.example](../.env.example) for easy local setup.
 - Updated the README with configuration and workflow notes.
+- Reorganized the repository into [contracts/](../contracts), [archive/](../archive), and the existing notebook/data folders.
+- Moved the Solidity contract and ABI into [contracts/](../contracts) and updated all references.
 
 ## Current toggle
 

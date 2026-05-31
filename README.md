@@ -13,6 +13,8 @@ If you are working on the blockchain notebook, start with [DEVELOPER_GUIDE.md](D
 ## Project layout
 
 - `IOT Data Simulation/` - notebooks and source data files used by simulations.
+- `contracts/` - Solidity contract and ABI used by the blockchain notebook.
+- `archive/` - older draft and milestone notebooks kept for reference.
 - `.github/copilot-instructions.md` - Copilot session guidance specific to this repository.
 - `.github/skills/` - project-specific agent skill docs for notebook execution, dataset mapping, and blockchain reset workflows.
 
@@ -34,7 +36,7 @@ The blockchain notebook reads these values from `.env` when they are available:
 - `CONTRACT_OWNER` - optional override for the sending account.
 - `TARGET_CONTRACT_RECORDS` - how many on-chain records the notebook should try to write.
 - `CSV_PATH` - notebook input CSV path.
-- `ABI_PATH` - ABI file path used when loading the contract.
+- `ABI_PATH` - ABI file path used when loading the contract, now under `contracts/`.
 - `SAMPLE_ROWS` - number of CSV rows shown in the preview.
 - `WRITE_DELAY_SECONDS` - pause between contract writes.
 - `WRITE_GAS_LIMIT` - gas limit for each write transaction.

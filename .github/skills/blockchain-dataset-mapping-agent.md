@@ -30,4 +30,4 @@ Use this skill when you are:
 
 - [MS1_Smart_Tracking_System_Blockchain_Ledger_Submission_TeamKaizen.ipynb](../../MS1_Smart_Tracking_System_Blockchain_Ledger_Submission_TeamKaizen.ipynb)
 - [IOT Data Simulation/smart_logistic_tracker_japan.csv](../../IOT%20Data%20Simulation/smart_logistic_tracker_japan.csv)
-- [IoTDataStorage.sol](../../IoTDataStorage.sol)
+- [IoTDataStorage.sol](../../contracts/IoTDataStorage.sol)

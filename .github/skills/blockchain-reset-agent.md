@@ -31,7 +31,7 @@ Use this skill when you are:
 
 ## Reference files
 
-- [IoTDataStorage.sol](../../IoTDataStorage.sol)
+- [IoTDataStorage.sol](../../contracts/IoTDataStorage.sol)
 - [MS1_Smart_Tracking_System_Blockchain_Ledger_Submission_TeamKaizen.ipynb](../../MS1_Smart_Tracking_System_Blockchain_Ledger_Submission_TeamKaizen.ipynb)
 - [.env](../../.env)
 

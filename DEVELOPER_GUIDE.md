@@ -10,7 +10,7 @@ The notebook currently does four important things:
 
 1. Loads the CSV and shows the first 5 rows.
 2. Connects to Ganache.
-3. Loads the deployed contract using the ABI in [abi.json](abi.json).
+3. Loads the deployed contract using the ABI in [contracts/abi.json](contracts/abi.json).
 4. Writes data to the chain while avoiding duplicate exact records and respecting the contract’s record limit.
 
 ```mermaid
@@ -53,7 +53,7 @@ CONTRACT_ADDRESS=0x...
 CONTRACT_OWNER=0x...
 TARGET_CONTRACT_RECORDS=100
 CSV_PATH=IOT Data Simulation/smart_logistic_tracker_japan.csv
-ABI_PATH=abi.json
+ABI_PATH=contracts/abi.json
 SAMPLE_ROWS=5
 WRITE_DELAY_SECONDS=0.1
 WRITE_GAS_LIMIT=3000000

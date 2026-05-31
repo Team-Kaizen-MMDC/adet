@@ -25,7 +25,7 @@ Use this skill when you are:
 - [MS1_Smart_Tracking_System_Blockchain_Ledger_Submission_TeamKaizen.ipynb](../../MS1_Smart_Tracking_System_Blockchain_Ledger_Submission_TeamKaizen.ipynb)
 - [README.md](../../README.md)
 - [.env](../../.env)
-- [abi.json](../../abi.json)
+- [abi.json](../../contracts/abi.json)
 
 ## Handy checks
 
