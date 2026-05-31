@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^source /Users/brianjancarlos/codestuff/MMDC/ADET/adet/\\.venv/bin/activate && python - <<'PY'\nfrom web3 import Web3\nrpc = 'http://127\\.0\\.0\\.1:8545'\naddress = '0xF633071fB31C49Fd5C805Cfd16e889F5F2952a67'\nw3 = Web3\\(Web3\\.HTTPProvider\\(rpc\\)\\)\nprint\\('connected', w3\\.is_connected\\(\\)\\)\nprint\\('accounts', w3\\.eth\\.accounts\\[:3\\]\\)\ncode = w3\\.eth\\.get_code\\(Web3\\.to_checksum_address\\(address\\)\\)\nprint\\('code_len', len\\(code\\)\\)\nprint\\('code_prefix', code\\[:10\\]\\.hex\\(\\)\\)\nPY$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
