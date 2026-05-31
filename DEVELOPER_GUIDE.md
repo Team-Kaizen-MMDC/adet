@@ -33,6 +33,8 @@ source .venv/bin/activate
 python3 -m pip install jupyter pandas numpy matplotlib
 ```
 
+Before running the notebook, copy [/.env.example](.env.example) to [/.env](.env) and update the values for your local Ganache chain and contract.
+
 If you need to freeze dependencies after a change, run:
 
 ```bash
@@ -50,6 +52,12 @@ GANACHE_URL=http://127.0.0.1:8545
 CONTRACT_ADDRESS=0x...
 CONTRACT_OWNER=0x...
 TARGET_CONTRACT_RECORDS=100
+CSV_PATH=IOT Data Simulation/smart_logistic_tracker_japan.csv
+ABI_PATH=abi.json
+SAMPLE_ROWS=5
+WRITE_DELAY_SECONDS=0.1
+WRITE_GAS_LIMIT=3000000
+ENABLE_DUPLICATE_WRITES=false
 ```
 
 ### Variable meanings
@@ -58,6 +66,12 @@ TARGET_CONTRACT_RECORDS=100
 - `CONTRACT_ADDRESS`: The deployed smart contract address for the notebook session.
 - `CONTRACT_OWNER`: Optional override for the sending account. Use this if the on-chain owner is not unlocked in Ganache.
 - `TARGET_CONTRACT_RECORDS`: The number of on-chain records the notebook should try to write in a run.
+- `CSV_PATH`: Path to the CSV file that the notebook loads.
+- `ABI_PATH`: Path to the ABI file for the deployed contract.
+- `SAMPLE_ROWS`: Number of rows shown in the preview cell.
+- `WRITE_DELAY_SECONDS`: Delay between each transaction.
+- `WRITE_GAS_LIMIT`: Gas limit used for each transaction.
+- `ENABLE_DUPLICATE_WRITES`: Set to `true` when you want to force exact duplicates to be written.
 
 ### Important detail
 
@@ -81,7 +95,7 @@ Run the cells in this order:
 
 ### Cell 1: CSV load
 
-This cell reads `IOT Data Simulation/smart_logistic_tracker_japan.csv`, prints the total row count, and shows the first 5 records.
+This cell reads the CSV path from `.env`, prints the total row count, and shows the first `SAMPLE_ROWS` records.
 
 It also has basic error handling for:
 
@@ -94,7 +108,7 @@ If the CSV fails to load, `df` becomes an empty DataFrame so later cells do not 
 
 ### Cell 3: Contract setup
 
-This cell reads the contract address from `.env`, loads `abi.json`, creates the contract instance, and sets the sender account.
+This cell reads the contract address from `.env`, loads the ABI from `ABI_PATH`, creates the contract instance, and sets the sender account.
 
 If the on-chain owner is not unlocked in Ganache, you must set `CONTRACT_OWNER` to an unlocked account.
 
@@ -110,6 +124,8 @@ It now:
 - stops early if the contract is full
 
 Because each CSV row produces two records, the row count is calculated carefully so the notebook does not overrun the contract.
+
+The write loop also uses `WRITE_DELAY_SECONDS` and `WRITE_GAS_LIMIT` from `.env`.
 
 ## Common Problems
 
@@ -143,6 +159,8 @@ Fix:
 ### Duplicate rows are skipped
 
 This is expected. The notebook checks the exact `package_id + data_type + data_value` combination before writing.
+
+If you want to test duplicate writes on purpose, set `ENABLE_DUPLICATE_WRITES=true` in `.env`. In that mode the notebook will stop skipping exact duplicates and will write them again.
 
 ## Resetting for a fresh test run
 

@@ -23,6 +23,8 @@ source .venv/bin/activate
 python3 -m pip install jupyter pandas numpy matplotlib
 ```
 
+Before running the blockchain notebook, copy [/.env.example](.env.example) to [/.env](.env) and fill in the values for your local Ganache setup.
+
 ## Notebook configuration
 
 The blockchain notebook reads these values from `.env` when they are available:
@@ -31,6 +33,12 @@ The blockchain notebook reads these values from `.env` when they are available:
 - `CONTRACT_ADDRESS` - deployed contract address.
 - `CONTRACT_OWNER` - optional override for the sending account.
 - `TARGET_CONTRACT_RECORDS` - how many on-chain records the notebook should try to write.
+- `CSV_PATH` - notebook input CSV path.
+- `ABI_PATH` - ABI file path used when loading the contract.
+- `SAMPLE_ROWS` - number of CSV rows shown in the preview.
+- `WRITE_DELAY_SECONDS` - pause between contract writes.
+- `WRITE_GAS_LIMIT` - gas limit for each write transaction.
+- `ENABLE_DUPLICATE_WRITES` - set to `true` to write exact duplicates instead of skipping them.
 
 The notebook stores two contract records per CSV row, one for `Location` and one for `Status`.
 
@@ -94,3 +102,7 @@ This repository uses a lightweight GitFlow-style model:
 
 - When a notebook is changed, verify it executes successfully with `jupyter nbconvert --execute`.
 - Keep paired CSV/JSON assets in `IOT Data Simulation/` synchronized with notebook logic.
+
+## Improvement Log
+
+See [docs/IMPROVEMENTS.md](docs/IMPROVEMENTS.md) for a compact record of the notebook, config, and docs improvements made so far.
