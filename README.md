@@ -6,10 +6,15 @@
 
 IoT-focused simulation and analysis workspace using Jupyter notebooks and paired CSV/JSON datasets.
 
+## Developer guide
+
+If you are working on the blockchain notebook, start with [DEVELOPER_GUIDE.md](DEVELOPER_GUIDE.md). It explains the environment variables, notebook flow, duplicate handling, and how to reset the chain for a fresh test run.
+
 ## Project layout
 
 - `IOT Data Simulation/` - notebooks and source data files used by simulations.
 - `.github/copilot-instructions.md` - Copilot session guidance specific to this repository.
+- `.github/skills/` - project-specific agent skill docs for notebook execution, dataset mapping, and blockchain reset workflows.
 
 ## Getting started
 
@@ -17,6 +22,17 @@ IoT-focused simulation and analysis workspace using Jupyter notebooks and paired
 source .venv/bin/activate
 python3 -m pip install jupyter pandas numpy matplotlib
 ```
+
+## Notebook configuration
+
+The blockchain notebook reads these values from `.env` when they are available:
+
+- `GANACHE_URL` - local Ganache RPC endpoint.
+- `CONTRACT_ADDRESS` - deployed contract address.
+- `CONTRACT_OWNER` - optional override for the sending account.
+- `TARGET_CONTRACT_RECORDS` - how many on-chain records the notebook should try to write.
+
+The notebook stores two contract records per CSV row, one for `Location` and one for `Status`.
 
 ## Run notebooks
 
@@ -34,6 +50,8 @@ for nb in "IOT Data Simulation"/*.ipynb; do
 done
 ```
 
+For the blockchain notebook specifically, rerun the cells in order from the CSV load cell through the write cell.
+
 ## Data conventions
 
 - Notebook and dataset names are intentionally paired (for example, `iot-data-simulation.ipynb` with `iot_data.csv` and `iot_data.json`).
@@ -46,7 +64,6 @@ done
 - UV (alternative package manager): this repo contains a `.gitignore` entry for `uv.lock`. If using UV, prefer committing `uv.lock` alongside dependency changes to ensure reproducible installs.
 
   Example workflows (consult your installed UV version's docs for exact commands):
-
   - Install UV (example): `pipx install uv` or `pip install uv`
   - Add a dependency: `uv add <package>`
   - Install from lockfile: `uv install` (creates/uses `uv.lock`)
