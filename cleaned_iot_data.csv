@@ -1,0 +1,167 @@
+timestamp,device_id,data_type,data_value,numeric_value
+2026-05-31 01:54:45,PKG7545,Location,Naha Central Post Office,0.0
+2026-05-31 01:54:45,PKG7545,Status,Out for Delivery,0.0
+2026-05-31 01:54:46,PKG2659,Location,Nagoya Central Post Office,0.0
+2026-05-31 01:54:46,PKG2659,Status,Arrival,0.0
+2026-05-31 01:54:46,PKG7965,Location,Nagoya Central Post Office,0.0
+2026-05-31 01:54:46,PKG7965,Status,Storage,0.0
+2026-05-31 01:54:46,PKG5296,Location,Sapporo Central Post Office,0.0
+2026-05-31 01:54:46,PKG5296,Status,Delivered to the delivery address,0.0
+2026-05-31 01:54:47,PKG9987,Location,Yokohama Sales Office,0.0
+2026-05-31 01:54:47,PKG9987,Status,Bring it back due to your absence,0.0
+2026-05-31 01:54:47,PKG8392,Location,Nagoya Central Post Office,0.0
+2026-05-31 01:54:47,PKG8392,Status,Hold at Yamato,0.0
+2026-05-31 01:54:47,PKG2808,Location,Naha Central Post Office,0.0
+2026-05-31 01:54:48,PKG2808,Status,Delay,0.0
+2026-05-31 01:54:48,PKG1749,Location,Fukuoka Distribution Center,0.0
+2026-05-31 01:54:48,PKG1749,Status,Arrival,0.0
+2026-05-31 01:54:48,PKG1803,Location,Sapporo Central Post Office,0.0
+2026-05-31 01:54:49,PKG1803,Status,Hand it over at the window,0.0
+2026-05-31 01:54:49,PKG2151,Location,Yokohama Sales Office,0.0
+2026-05-31 01:54:49,PKG2151,Status,In Transit,0.0
+2026-05-31 01:54:50,PKG2585,Location,Yokohama Sales Office,0.0
+2026-05-31 01:54:50,PKG2585,Status,Arrival Scan,0.0
+2026-05-31 01:54:50,PKG7157,Location,Yokohama Sales Office,0.0
+2026-05-31 01:54:50,PKG7157,Status,Hand it over at the window,0.0
+2026-05-31 01:54:51,PKG5612,Location,Naha Central Post Office,0.0
+2026-05-31 01:54:51,PKG5612,Status,Bring it back due to your absence,0.0
+2026-05-31 01:54:51,PKG2377,Location,Osaka Central Post Office,0.0
+2026-05-31 01:54:52,PKG2377,Status,Returned,0.0
+2026-05-31 01:54:52,PKG3244,Location,Fukuoka Distribution Center,0.0
+2026-05-31 01:54:53,PKG3244,Status,Returned,0.0
+2026-05-31 01:54:53,PKG4196,Location,Naha Central Post Office,0.0
+2026-05-31 01:54:53,PKG4196,Status,Storage,0.0
+2026-05-31 01:54:54,PKG8850,Location,Nagoya Central Post Office,0.0
+2026-05-31 01:54:54,PKG8850,Status,Delivered,0.0
+2026-05-31 01:54:54,PKG8659,Location,Fukuoka Distribution Center,0.0
+2026-05-31 01:54:55,PKG8659,Status,Hold at Yamato,0.0
+2026-05-31 01:54:55,PKG1347,Location,Nagoya Central Post Office,0.0
+2026-05-31 01:54:56,PKG1347,Status,Returned to the sender,0.0
+2026-05-31 01:54:56,PKG8088,Location,Tokyo Central Post Office,0.0
+2026-05-31 01:54:56,PKG8088,Status,Under Investigation,0.0
+2026-05-31 01:54:57,PKG2762,Location,Yokohama Sales Office,0.0
+2026-05-31 01:54:57,PKG2762,Status,Arrival Scan,0.0
+2026-05-31 01:54:58,PKG8577,Location,Naha Central Post Office,0.0
+2026-05-31 01:54:58,PKG8577,Status,Hand it over at the window,0.0
+2026-05-31 01:54:59,PKG5517,Location,Yokohama Sales Office,0.0
+2026-05-31 01:54:59,PKG5517,Status,Delay,0.0
+2026-05-31 01:55:00,PKG7409,Location,Sapporo Central Post Office,0.0
+2026-05-31 01:55:00,PKG7409,Status,Arrival,0.0
+2026-05-31 01:55:00,PKG5985,Location,Tokyo Central Post Office,0.0
+2026-05-31 01:55:01,PKG5985,Status,Returned,0.0
+2026-05-31 01:55:01,PKG2775,Location,Osaka Central Post Office,0.0
+2026-05-31 01:55:02,PKG2775,Status,Under Investigation,0.0
+2026-05-31 01:55:02,PKG2220,Location,Nagoya Central Post Office,0.0
+2026-05-31 01:55:03,PKG2220,Status,Delivered to the delivery address,0.0
+2026-05-31 01:55:03,PKG1643,Location,Sapporo Central Post Office,0.0
+2026-05-31 01:55:04,PKG1643,Status,Arrival,0.0
+2026-05-31 01:55:04,PKG9122,Location,Tokyo Central Post Office,0.0
+2026-05-31 01:55:05,PKG9122,Status,Delay,0.0
+2026-05-31 01:55:05,PKG6691,Location,Sapporo Central Post Office,0.0
+2026-05-31 01:55:06,PKG6691,Status,Bring it back due to your absence,0.0
+2026-05-31 01:55:07,PKG7202,Location,Osaka Central Post Office,0.0
+2026-05-31 01:55:07,PKG7202,Status,Arrival Scan,0.0
+2026-05-31 01:55:08,PKG3751,Location,Sapporo Central Post Office,0.0
+2026-05-31 01:55:08,PKG3751,Status,Departure Scan,0.0
+2026-05-31 01:55:09,PKG2956,Location,Naha Central Post Office,0.0
+2026-05-31 01:55:10,PKG2956,Status,Returned,0.0
+2026-05-31 01:55:10,PKG7681,Location,Nagoya Central Post Office,0.0
+2026-05-31 01:55:11,PKG7681,Status,Delay,0.0
+2026-05-31 01:55:11,PKG2083,Location,Yokohama Sales Office,0.0
+2026-05-31 01:55:12,PKG2083,Status,Storage,0.0
+2026-05-31 01:55:13,PKG2550,Location,Naha Central Post Office,0.0
+2026-05-31 01:55:14,PKG2550,Status,Delay,0.0
+2026-05-31 01:55:14,PKG8155,Location,Naha Central Post Office,0.0
+2026-05-31 01:55:15,PKG8155,Status,Departure Scan,0.0
+2026-05-31 01:55:16,PKG2886,Location,Sapporo Central Post Office,0.0
+2026-05-31 01:55:16,PKG2886,Status,Returned,0.0
+2026-05-31 01:55:17,PKG1191,Location,Nagoya Central Post Office,0.0
+2026-05-31 01:55:18,PKG1191,Status,Storage,0.0
+2026-05-31 01:55:19,PKG9613,Location,Nagoya Central Post Office,0.0
+2026-05-31 01:55:19,PKG9613,Status,Hold at Yamato,0.0
+2026-05-31 01:55:20,PKG8059,Location,Fukuoka Distribution Center,0.0
+2026-05-31 01:55:21,PKG8059,Status,Out for Delivery,0.0
+2026-05-31 01:55:22,PKG7953,Location,Nagoya Central Post Office,0.0
+2026-05-31 01:55:23,PKG7953,Status,Arrival,0.0
+2026-05-31 01:55:24,PKG2989,Location,Yokohama Sales Office,0.0
+2026-05-31 01:55:24,PKG2989,Status,Bring it back due to your absence,0.0
+2026-05-31 01:55:25,PKG3002,Location,Sapporo Central Post Office,0.0
+2026-05-31 01:55:26,PKG3002,Status,Out for Delivery,0.0
+2026-05-31 01:55:27,PKG5872,Location,Tokyo Central Post Office,0.0
+2026-05-31 01:55:28,PKG5872,Status,Arrival Scan,0.0
+2026-05-31 01:55:29,PKG8631,Location,Naha Central Post Office,0.0
+2026-05-31 01:55:30,PKG8631,Status,Returned to the sender,0.0
+2026-05-31 01:55:31,PKG1689,Location,Osaka Central Post Office,0.0
+2026-05-31 01:55:32,PKG1689,Status,Arrival Scan,0.0
+2026-05-31 01:55:33,PKG3400,Location,Osaka Central Post Office,0.0
+2026-05-31 01:55:33,PKG3400,Status,Hand it over at the window,0.0
+2026-05-31 01:55:34,PKG5481,Location,Fukuoka Distribution Center,0.0
+2026-05-31 01:55:35,PKG5481,Status,Delivered to the delivery address,0.0
+2026-05-31 01:55:36,PKG7973,Location,Naha Central Post Office,0.0
+2026-05-31 01:55:36,PKG7973,Status,Arrival Scan,0.0
+2026-05-31 01:55:37,PKG5863,Location,Naha Central Post Office,0.0
+2026-05-31 01:55:38,PKG5863,Status,Hand it over at the window,0.0
+2026-05-31 01:55:39,PKG3928,Location,Naha Central Post Office,0.0
+2026-05-31 01:55:40,PKG3928,Status,Bring it back due to your absence,0.0
+2026-05-31 01:55:41,PKG8254,Location,Nagoya Central Post Office,0.0
+2026-05-31 01:55:42,PKG8254,Status,Delivered to the delivery address,0.0
+2026-05-31 01:55:43,PKG4344,Location,Tokyo Central Post Office,0.0
+2026-05-31 01:55:44,PKG4344,Status,Returned,0.0
+2026-05-31 01:55:45,PKG9080,Location,Sapporo Central Post Office,0.0
+2026-05-31 01:55:46,PKG9080,Status,Returned to the sender,0.0
+2026-05-31 01:55:47,PKG7455,Location,Fukuoka Distribution Center,0.0
+2026-05-31 01:55:47,PKG7455,Status,Delivered,0.0
+2026-05-31 01:55:49,PKG8002,Location,Tokyo Central Post Office,0.0
+2026-05-31 01:55:49,PKG8002,Status,Bring it back due to your absence,0.0
+2026-05-31 01:55:51,PKG6155,Location,Sapporo Central Post Office,0.0
+2026-05-31 01:55:51,PKG6155,Status,Returned to the sender,0.0
+2026-05-31 01:55:53,PKG6108,Location,Fukuoka Distribution Center,0.0
+2026-05-31 01:55:54,PKG6108,Status,Hold at Yamato,0.0
+2026-05-31 01:55:55,PKG2439,Location,Yokohama Sales Office,0.0
+2026-05-31 01:55:56,PKG2439,Status,In Transit,0.0
+2026-05-31 01:55:57,PKG3231,Location,Naha Central Post Office,0.0
+2026-05-31 01:55:58,PKG3231,Status,Hand it over at the window,0.0
+2026-05-31 01:55:59,PKG3309,Location,Sapporo Central Post Office,0.0
+2026-05-31 01:56:00,PKG3309,Status,Returned,0.0
+2026-05-31 01:56:01,PKG9257,Location,Yokohama Sales Office,0.0
+2026-05-31 01:56:02,PKG9257,Status,Bring it back due to your absence,0.0
+2026-05-31 01:56:03,PKG1329,Location,Osaka Central Post Office,0.0
+2026-05-31 01:56:04,PKG1329,Status,In Transit,0.0
+2026-05-31 01:56:05,PKG6811,Location,Osaka Central Post Office,0.0
+2026-05-31 01:56:06,PKG6811,Status,Hold at Yamato,0.0
+2026-05-31 01:56:07,PKG9244,Location,Naha Central Post Office,0.0
+2026-05-31 01:56:08,PKG9244,Status,Returned to the sender,0.0
+2026-05-31 01:56:10,PKG1717,Location,Tokyo Central Post Office,0.0
+2026-05-31 01:56:11,PKG1717,Status,Arrival,0.0
+2026-05-31 01:56:12,PKG3405,Location,Sapporo Central Post Office,0.0
+2026-05-31 01:56:13,PKG3405,Status,Under Investigation,0.0
+2026-05-31 01:56:14,PKG4781,Location,Fukuoka Distribution Center,0.0
+2026-05-31 01:56:15,PKG4781,Status,Bring it back due to your absence,0.0
+2026-05-31 01:56:17,PKG9294,Location,Sapporo Central Post Office,0.0
+2026-05-31 01:56:18,PKG9294,Status,Hand it over at the window,0.0
+2026-05-31 01:56:19,PKG2894,Location,Naha Central Post Office,0.0
+2026-05-31 01:56:20,PKG2894,Status,Hand it over at the window,0.0
+2026-05-31 01:56:21,PKG9355,Location,Fukuoka Distribution Center,0.0
+2026-05-31 01:56:23,PKG9355,Status,Bring it back due to your absence,0.0
+2026-05-31 01:56:24,PKG8480,Location,Tokyo Central Post Office,0.0
+2026-05-31 01:56:26,PKG8480,Status,Storage,0.0
+2026-05-31 01:56:27,PKG6235,Location,Nagoya Central Post Office,0.0
+2026-05-31 01:56:28,PKG6235,Status,Arrival,0.0
+2026-05-31 01:56:30,PKG3962,Location,Fukuoka Distribution Center,0.0
+2026-05-31 01:56:31,PKG3962,Status,Returned to the sender,0.0
+2026-05-31 01:56:33,PKG5645,Location,Tokyo Central Post Office,0.0
+2026-05-31 01:56:34,PKG5645,Status,Delay,0.0
+2026-05-31 01:56:35,PKG7297,Location,Osaka Central Post Office,0.0
+2026-05-31 01:56:37,PKG7297,Status,Arrival Scan,0.0
+2026-05-31 01:56:38,PKG3700,Location,Fukuoka Distribution Center,0.0
+2026-05-31 01:56:40,PKG3700,Status,Hold at Yamato,0.0
+2026-05-31 01:56:41,PKG2183,Location,Osaka Central Post Office,0.0
+2026-05-31 01:56:42,PKG2183,Status,Delay,0.0
+2026-05-31 01:56:44,PKG2282,Location,Fukuoka Distribution Center,0.0
+2026-05-31 01:56:45,PKG2282,Status,Bring it back due to your absence,0.0
+2026-05-31 01:56:46,PKG7489,Location,Nagoya Central Post Office,0.0
+2026-05-31 01:56:48,PKG7489,Status,Returned,0.0
+2026-05-31 01:56:49,PKG7532,Location,Nagoya Central Post Office,0.0
+2026-05-31 01:56:51,PKG7532,Status,Under Investigation,0.0
+2026-05-31 01:56:52,PKG5334,Location,Yokohama Sales Office,0.0
+2026-05-31 01:56:54,PKG5334,Status,Delivered,0.0
