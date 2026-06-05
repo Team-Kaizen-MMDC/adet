@@ -1,147 +1,117 @@
 timestamp,package_id,current_location,temperature,temperature_celsius,humidity,status
 2026-05-31 01:55:17,PKG1191,Nagoya Central Post Office,0,0.0,0.0,Storage
-2026-05-31 01:54:55,PKG1347,Nagoya Central Post Office,0,0.0,0.0,Returned to the sender
+2026-05-31 01:56:03,PKG1329,Osaka Central Post Office,0,0.0,0.0,In Transit
+2026-05-31 01:54:55,PKG1347,Nagoya Central Post Office,18.8°C,18.8,76.0,Returned to the sender
 2026-05-31 01:55:03,PKG1643,Sapporo Central Post Office,0,0.0,0.0,Arrival
-2026-05-31 01:54:48,PKG1749,Fukuoka Distribution Center,0,0.0,0.0,Arrival
-2026-05-31 01:54:48,PKG1803,Sapporo Central Post Office,0,0.0,0.0,Hand it over at the window
+2026-05-31 01:55:31,PKG1689,Osaka Central Post Office,0,0.0,0.0,Arrival Scan
+2026-05-31 01:56:10,PKG1717,Tokyo Central Post Office,0,0.0,0.0,Arrival
+2026-05-31 01:54:48,PKG1749,Fukuoka Distribution Center,19.6°C,19.6,34.0,Arrival
+2026-05-31 01:54:48,PKG1803,Sapporo Central Post Office,22.6°C,22.6,55.0,Hand it over at the window
 2026-05-31 01:55:11,PKG2083,Yokohama Sales Office,0,0.0,0.0,Storage
-2026-05-31 01:54:49,PKG2151,Yokohama Sales Office,0,0.0,0.0,In Transit
+2026-05-31 01:54:49,PKG2151,Yokohama Sales Office,23.0°C,23.0,89.0,In Transit
+2026-05-31 01:56:41,PKG2183,Osaka Central Post Office,0,0.0,0.0,Delay
 2026-05-31 01:55:02,PKG2220,Nagoya Central Post Office,0,0.0,0.0,Delivered to the delivery address
-2026-05-31 01:54:51,PKG2377,Osaka Central Post Office,0,0.0,0.0,Returned
+2026-05-31 01:56:44,PKG2282,Fukuoka Distribution Center,0,0.0,0.0,Bring it back due to your absence
+2026-05-31 01:54:51,PKG2377,Osaka Central Post Office,9.4°C,9.4,81.0,Returned
+2026-05-31 01:55:55,PKG2439,Yokohama Sales Office,0,0.0,0.0,In Transit
 2026-05-31 01:55:13,PKG2550,Naha Central Post Office,0,0.0,0.0,Delay
-2026-05-31 01:54:50,PKG2585,Yokohama Sales Office,0,0.0,0.0,Arrival Scan
-2026-05-31 01:54:46,PKG2659,Nagoya Central Post Office,0,0.0,0.0,Arrival
-2026-05-31 01:54:57,PKG2762,Yokohama Sales Office,0,0.0,0.0,Arrival Scan
+2026-05-31 01:54:50,PKG2585,Yokohama Sales Office,8.3°C,8.3,73.0,Arrival Scan
+2026-05-31 01:54:46,PKG2659,Nagoya Central Post Office,6.2°C,6.2,82.0,Arrival
+2026-05-31 01:54:57,PKG2762,Yokohama Sales Office,-2.5°C,-2.5,77.0,Arrival Scan
 2026-05-31 01:55:01,PKG2775,Osaka Central Post Office,0,0.0,0.0,Under Investigation
-2026-05-31 01:54:47,PKG2808,Naha Central Post Office,0,0.0,0.0,Delay
+2026-05-31 01:54:47,PKG2808,Naha Central Post Office,0.9°C,0.9,48.0,Delay
 2026-05-31 01:55:16,PKG2886,Sapporo Central Post Office,0,0.0,0.0,Returned
+2026-05-31 01:56:19,PKG2894,Naha Central Post Office,0,0.0,0.0,Hand it over at the window
 2026-05-31 01:55:09,PKG2956,Naha Central Post Office,0,0.0,0.0,Returned
 2026-05-31 01:55:24,PKG2989,Yokohama Sales Office,0,0.0,0.0,Bring it back due to your absence
 2026-05-31 01:55:25,PKG3002,Sapporo Central Post Office,0,0.0,0.0,Out for Delivery
-2026-05-31 01:54:52,PKG3244,Fukuoka Distribution Center,0,0.0,0.0,Returned
-2026-05-31 01:55:08,PKG3751,Sapporo Central Post Office,0,0.0,0.0,Departure Scan
-2026-05-31 01:54:53,PKG4196,Naha Central Post Office,0,0.0,0.0,Storage
-2026-05-31 01:54:46,PKG5296,Sapporo Central Post Office,0,0.0,0.0,Delivered to the delivery address
-2026-05-31 01:54:59,PKG5517,Yokohama Sales Office,0,0.0,0.0,Delay
-2026-05-31 01:54:51,PKG5612,Naha Central Post Office,0,0.0,0.0,Bring it back due to your absence
-2026-05-31 01:55:27,PKG5872,Tokyo Central Post Office,0,0.0,0.0,Arrival Scan
-2026-05-31 01:55:00,PKG5985,Tokyo Central Post Office,0,0.0,0.0,Returned
-2026-05-31 01:55:05,PKG6691,Sapporo Central Post Office,0,0.0,0.0,Bring it back due to your absence
-2026-05-31 01:54:50,PKG7157,Yokohama Sales Office,0,0.0,0.0,Hand it over at the window
-2026-05-31 01:55:07,PKG7202,Osaka Central Post Office,0,0.0,0.0,Arrival Scan
-2026-05-31 01:55:00,PKG7409,Sapporo Central Post Office,0,0.0,0.0,Arrival
-2026-05-31 01:54:45,PKG7545,Naha Central Post Office,0,0.0,0.0,Out for Delivery
-2026-05-31 01:55:10,PKG7681,Nagoya Central Post Office,0,0.0,0.0,Delay
-2026-05-31 01:55:22,PKG7953,Nagoya Central Post Office,0,0.0,0.0,Arrival
-2026-05-31 01:54:46,PKG7965,Nagoya Central Post Office,0,0.0,0.0,Storage
-2026-05-31 01:55:20,PKG8059,Fukuoka Distribution Center,0,0.0,0.0,Out for Delivery
-2026-05-31 01:54:56,PKG8088,Tokyo Central Post Office,0,0.0,0.0,Under Investigation
-2026-05-31 01:55:14,PKG8155,Naha Central Post Office,0,0.0,0.0,Departure Scan
-2026-05-31 01:54:47,PKG8392,Nagoya Central Post Office,0,0.0,0.0,Hold at Yamato
-2026-05-31 01:54:58,PKG8577,Naha Central Post Office,0,0.0,0.0,Hand it over at the window
-2026-05-31 01:55:29,PKG8631,Naha Central Post Office,0,0.0,0.0,0
-2026-05-31 01:54:54,PKG8659,Fukuoka Distribution Center,0,0.0,0.0,Hold at Yamato
-2026-05-31 01:54:54,PKG8850,Nagoya Central Post Office,0,0.0,0.0,Delivered
-2026-05-31 01:55:04,PKG9122,Tokyo Central Post Office,0,0.0,0.0,Delay
-2026-05-31 01:55:19,PKG9613,Nagoya Central Post Office,0,0.0,0.0,Hold at Yamato
-2026-05-31 01:54:47,PKG9987,Yokohama Sales Office,0,0.0,0.0,Bring it back due to your absence
-2026-05-31 01:56:03,PKG1329,Osaka Central Post Office,0,0.0,0.0,In Transit
-2026-05-31 01:55:31,PKG1689,Osaka Central Post Office,0,0.0,0.0,Arrival Scan
-2026-05-31 01:56:10,PKG1717,Tokyo Central Post Office,0,0.0,0.0,Arrival
-2026-05-31 01:55:55,PKG2439,Yokohama Sales Office,0,0.0,0.0,In Transit
-2026-05-31 01:56:19,PKG2894,Naha Central Post Office,0,0.0,0.0,Hand it over at the window
 2026-05-31 01:55:57,PKG3231,Naha Central Post Office,0,0.0,0.0,Hand it over at the window
+2026-05-31 01:54:52,PKG3244,Fukuoka Distribution Center,2.0°C,2.0,60.0,Returned
 2026-05-31 01:55:59,PKG3309,Sapporo Central Post Office,0,0.0,0.0,Returned
 2026-05-31 01:55:33,PKG3400,Osaka Central Post Office,0,0.0,0.0,Hand it over at the window
 2026-05-31 01:56:12,PKG3405,Sapporo Central Post Office,0,0.0,0.0,Under Investigation
+2026-05-31 01:56:38,PKG3700,Fukuoka Distribution Center,0,0.0,0.0,Hold at Yamato
+2026-05-31 01:55:08,PKG3751,Sapporo Central Post Office,0,0.0,0.0,Departure Scan
 2026-05-31 01:55:39,PKG3928,Naha Central Post Office,0,0.0,0.0,Bring it back due to your absence
-2026-05-31 01:56:30,PKG3962,Fukuoka Distribution Center,0,0.0,0.0,0
+2026-05-31 01:56:30,PKG3962,Fukuoka Distribution Center,0,0.0,0.0,Returned to the sender
+2026-05-31 01:54:53,PKG4196,Naha Central Post Office,14.5°C,14.5,62.0,Storage
 2026-05-31 01:55:43,PKG4344,Tokyo Central Post Office,0,0.0,0.0,Returned
 2026-05-31 01:56:14,PKG4781,Fukuoka Distribution Center,0,0.0,0.0,Bring it back due to your absence
+2026-05-31 01:54:46,PKG5296,Sapporo Central Post Office,6.3°C,6.3,87.0,Delivered to the delivery address
+2026-05-31 01:56:52,PKG5334,Yokohama Sales Office,0,0.0,0.0,Delivered
 2026-05-31 01:55:34,PKG5481,Fukuoka Distribution Center,0,0.0,0.0,Delivered to the delivery address
+2026-05-31 01:54:59,PKG5517,Yokohama Sales Office,-2.4°C,-2.4,85.0,Delay
+2026-05-31 01:54:51,PKG5612,Naha Central Post Office,4.4°C,4.4,48.0,Bring it back due to your absence
+2026-05-31 01:56:33,PKG5645,Tokyo Central Post Office,0,0.0,0.0,Delay
 2026-05-31 01:55:37,PKG5863,Naha Central Post Office,0,0.0,0.0,Hand it over at the window
+2026-05-31 01:55:27,PKG5872,Tokyo Central Post Office,0,0.0,0.0,Arrival Scan
+2026-05-31 01:55:00,PKG5985,Tokyo Central Post Office,4.3°C,4.3,61.0,Returned
 2026-05-31 01:55:53,PKG6108,Fukuoka Distribution Center,0,0.0,0.0,Hold at Yamato
 2026-05-31 01:55:51,PKG6155,Sapporo Central Post Office,0,0.0,0.0,Returned to the sender
 2026-05-31 01:56:27,PKG6235,Nagoya Central Post Office,0,0.0,0.0,Arrival
+2026-05-31 01:55:05,PKG6691,Sapporo Central Post Office,0,0.0,0.0,Bring it back due to your absence
 2026-05-31 01:56:05,PKG6811,Osaka Central Post Office,0,0.0,0.0,Hold at Yamato
+2026-05-31 01:54:50,PKG7157,Yokohama Sales Office,1.0°C,1.0,51.0,Hand it over at the window
+2026-05-31 01:55:07,PKG7202,Osaka Central Post Office,0,0.0,0.0,Arrival Scan
+2026-05-31 01:56:35,PKG7297,Osaka Central Post Office,0,0.0,0.0,Arrival Scan
+2026-05-31 01:55:00,PKG7409,Sapporo Central Post Office,2.3°C,2.3,65.0,Arrival
 2026-05-31 01:55:47,PKG7455,Fukuoka Distribution Center,0,0.0,0.0,Delivered
+2026-05-31 01:56:46,PKG7489,Nagoya Central Post Office,0,0.0,0.0,Returned
+2026-05-31 01:56:49,PKG7532,Nagoya Central Post Office,0,0.0,0.0,Under Investigation
+2026-05-31 01:54:45,PKG7545,Naha Central Post Office,10.7°C,10.7,40.0,Out for Delivery
+2026-05-31 01:55:10,PKG7681,Nagoya Central Post Office,0,0.0,0.0,Delay
+2026-05-31 01:55:22,PKG7953,Nagoya Central Post Office,0,0.0,0.0,Arrival
+2026-05-31 01:54:46,PKG7965,Nagoya Central Post Office,-3.1°C,-3.1,86.0,Storage
 2026-05-31 01:55:36,PKG7973,Naha Central Post Office,0,0.0,0.0,Arrival Scan
 2026-05-31 01:55:49,PKG8002,Tokyo Central Post Office,0,0.0,0.0,Bring it back due to your absence
+2026-05-31 01:55:20,PKG8059,Fukuoka Distribution Center,0,0.0,0.0,Out for Delivery
+2026-05-31 01:54:56,PKG8088,Tokyo Central Post Office,8.7°C,8.7,37.0,Under Investigation
+2026-05-31 01:55:14,PKG8155,Naha Central Post Office,0,0.0,0.0,Departure Scan
 2026-05-31 01:55:41,PKG8254,Nagoya Central Post Office,0,0.0,0.0,Delivered to the delivery address
+2026-05-31 01:54:47,PKG8392,Nagoya Central Post Office,2.5°C,2.5,61.0,Hold at Yamato
 2026-05-31 01:56:24,PKG8480,Tokyo Central Post Office,0,0.0,0.0,Storage
-2026-05-31 01:55:30,PKG8631,0,0,0.0,0.0,Returned to the sender
+2026-05-31 01:54:58,PKG8577,Naha Central Post Office,0.7°C,0.7,36.0,Hand it over at the window
+2026-05-31 01:55:29,PKG8631,Naha Central Post Office,0,0.0,0.0,Returned to the sender
+2026-05-31 01:54:54,PKG8659,Fukuoka Distribution Center,21.1°C,21.1,88.0,Hold at Yamato
+2026-05-31 01:54:54,PKG8850,Nagoya Central Post Office,11.1°C,11.1,51.0,Delivered
 2026-05-31 01:55:45,PKG9080,Sapporo Central Post Office,0,0.0,0.0,Returned to the sender
+2026-05-31 01:55:04,PKG9122,Tokyo Central Post Office,0,0.0,0.0,Delay
 2026-05-31 01:56:07,PKG9244,Naha Central Post Office,0,0.0,0.0,Returned to the sender
 2026-05-31 01:56:01,PKG9257,Yokohama Sales Office,0,0.0,0.0,Bring it back due to your absence
 2026-05-31 01:56:17,PKG9294,Sapporo Central Post Office,0,0.0,0.0,Hand it over at the window
 2026-05-31 01:56:21,PKG9355,Fukuoka Distribution Center,0,0.0,0.0,Bring it back due to your absence
-2026-05-31 01:56:41,PKG2183,Osaka Central Post Office,0,0.0,0.0,Delay
-2026-05-31 01:56:44,PKG2282,Fukuoka Distribution Center,0,0.0,0.0,Bring it back due to your absence
-2026-05-31 01:56:38,PKG3700,Fukuoka Distribution Center,0,0.0,0.0,Hold at Yamato
-2026-05-31 01:56:31,PKG3962,0,0,0.0,0.0,Returned to the sender
-2026-05-31 01:56:52,PKG5334,Yokohama Sales Office,0,0.0,0.0,Delivered
-2026-05-31 01:56:33,PKG5645,Tokyo Central Post Office,0,0.0,0.0,Delay
-2026-05-31 01:56:35,PKG7297,Osaka Central Post Office,0,0.0,0.0,Arrival Scan
-2026-05-31 01:56:46,PKG7489,Nagoya Central Post Office,0,0.0,0.0,Returned
-2026-05-31 01:56:49,PKG7532,Nagoya Central Post Office,0,0.0,0.0,Under Investigation
+2026-05-31 01:55:19,PKG9613,Nagoya Central Post Office,0,0.0,0.0,Hold at Yamato
+2026-05-31 01:54:47,PKG9987,Yokohama Sales Office,0.7°C,0.7,60.0,Bring it back due to your absence
+2026-06-05 10:35:33,SHP1478,0,12.9°C,12.9,38.0,Out for Delivery
+2026-06-05 10:36:49,SHP2076,0,13.5°C,13.5,84.0,Delayed
+2026-06-05 10:35:59,SHP2179,0,23.3°C,23.3,38.0,Out for Delivery
 2026-06-05 10:34:24,SHP2407,0,16.4°C,16.4,38.0,In Transit
-2026-06-05 10:34:02,SHP4147,0,20.8°C,20.8,85.0,Out for Delivery
-2026-06-05 10:34:20,SHP5767,0,-0.2°C,-0.2,32.0,In Transit
-2026-06-05 10:34:07,SHP6541,0,17.3°C,17.3,85.0,In Transit
-2026-06-05 10:34:29,SHP6770,0,0,0.0,0.0,Delayed
-2026-06-05 10:34:15,SHP8090,0,1.0°C,1.0,53.0,Out for Delivery
-2026-06-05 10:34:11,SHP8910,0,8.3°C,8.3,63.0,Out for Delivery
 2026-06-05 10:35:22,SHP2810,0,20.2°C,20.2,47.0,Delivered
 2026-06-05 10:35:00,SHP3385,0,6.1°C,6.1,32.0,Delayed
+2026-06-05 10:36:49,SHP3563,0,14.8°C,14.8,80.0,In Transit
+2026-06-05 10:34:02,SHP4147,0,20.8°C,20.8,85.0,Out for Delivery
+2026-06-05 10:36:50,SHP4292,0,23.7°C,23.7,82.0,In Transit
 2026-06-05 10:34:34,SHP4992,0,16.5°C,16.5,63.0,Out for Delivery
 2026-06-05 10:35:16,SHP5051,0,10.9°C,10.9,82.0,Delivered
-2026-06-05 10:35:27,SHP5878,0,19.4°C,19.4,0.0,In Transit
-2026-06-05 10:35:11,SHP6411,0,18.5°C,18.5,54.0,Out for Delivery
-2026-06-05 10:34:31,SHP6770,0,0.5°C,0.5,51.0,0
-2026-06-05 10:35:06,SHP6846,0,19.3°C,19.3,49.0,Delayed
-2026-06-05 10:34:43,SHP7190,0,1.1°C,1.1,63.0,Delayed
-2026-06-05 10:34:38,SHP8087,0,-0.9°C,-0.9,51.0,In Transit
-2026-06-05 10:34:48,SHP8199,0,6.8°C,6.8,71.0,Delivered
-2026-06-05 10:34:54,SHP9670,0,15.5°C,15.5,62.0,Delayed
-2026-06-05 10:35:33,SHP1478,0,12.9°C,12.9,38.0,Out for Delivery
-2026-06-05 10:35:59,SHP2179,0,23.3°C,23.3,38.0,Out for Delivery
-2026-06-05 10:36:19,SHP5185,0,0,0.0,0.0,Delivered
-2026-06-05 10:35:31,SHP5878,0,0,0.0,50.0,0
+2026-06-05 10:36:19,SHP5185,0,-4.1°C,-4.1,85.0,Delivered
+2026-06-05 10:34:20,SHP5767,0,-0.2°C,-0.2,32.0,In Transit
+2026-06-05 10:35:27,SHP5878,0,19.4°C,19.4,50.0,In Transit
 2026-06-05 10:36:06,SHP5944,0,8.6°C,8.6,62.0,In Transit
 2026-06-05 10:35:46,SHP6021,0,23.9°C,23.9,66.0,Delivered
-2026-06-05 10:36:13,SHP7732,0,4.9°C,4.9,44.0,Delivered
-2026-06-05 10:35:40,SHP8898,0,13.6°C,13.6,48.0,Delayed
-2026-06-05 10:35:52,SHP9439,0,21.5°C,21.5,66.0,Delivered
-2026-06-05 10:36:49,SHP2076,0,13.5°C,13.5,84.0,Delayed
-2026-06-05 10:36:49,SHP3563,0,14.8°C,14.8,80.0,In Transit
-2026-06-05 10:36:50,SHP4292,0,23.7°C,23.7,82.0,In Transit
-2026-06-05 10:36:49,SHP5185,0,-4.1°C,-4.1,85.0,0
+2026-06-05 10:35:11,SHP6411,0,18.5°C,18.5,54.0,Out for Delivery
+2026-06-05 10:34:07,SHP6541,0,17.3°C,17.3,85.0,In Transit
 2026-06-05 10:36:49,SHP6669,0,5.7°C,5.7,89.0,Delayed
+2026-06-05 10:34:29,SHP6770,0,0.5°C,0.5,51.0,Delayed
+2026-06-05 10:35:06,SHP6846,0,19.3°C,19.3,49.0,Delayed
 2026-06-05 10:36:50,SHP6849,0,11.9°C,11.9,87.0,Delivered
+2026-06-05 10:34:43,SHP7190,0,1.1°C,1.1,63.0,Delayed
+2026-06-05 10:36:13,SHP7732,0,4.9°C,4.9,44.0,Delivered
 2026-06-05 10:36:50,SHP7754,0,-2.8°C,-2.8,73.0,Delayed
+2026-06-05 10:34:38,SHP8087,0,-0.9°C,-0.9,51.0,In Transit
+2026-06-05 10:34:15,SHP8090,0,1.0°C,1.0,53.0,Out for Delivery
+2026-06-05 10:34:48,SHP8199,0,6.8°C,6.8,71.0,Delivered
+2026-06-05 10:35:40,SHP8898,0,13.6°C,13.6,48.0,Delayed
+2026-06-05 10:34:11,SHP8910,0,8.3°C,8.3,63.0,Out for Delivery
 2026-06-05 10:36:50,SHP9026,0,-1.6°C,-1.6,37.0,In Transit
-2026-06-05 10:56:47,PKG1347,0,18.8°C,18.8,76.0,0
-2026-06-05 10:56:46,PKG1749,0,19.6°C,19.6,34.0,0
-2026-06-05 10:56:46,PKG1803,0,22.6°C,22.6,55.0,0
-2026-06-05 10:56:46,PKG2151,0,23.0°C,23.0,89.0,0
-2026-06-05 10:56:47,PKG2377,0,9.4°C,9.4,81.0,0
-2026-06-05 10:56:46,PKG2585,0,8.3°C,8.3,73.0,0
-2026-06-05 10:56:45,PKG2659,0,6.2°C,6.2,82.0,0
-2026-06-05 10:56:48,PKG2762,0,-2.5°C,-2.5,77.0,0
-2026-06-05 10:56:46,PKG2808,0,0.9°C,0.9,48.0,0
-2026-06-05 10:56:47,PKG3244,0,2.0°C,2.0,60.0,0
-2026-06-05 10:56:47,PKG4196,0,14.5°C,14.5,62.0,0
-2026-06-05 10:56:45,PKG5296,0,6.3°C,6.3,87.0,0
-2026-06-05 10:56:48,PKG5517,0,-2.4°C,-2.4,85.0,0
-2026-06-05 10:56:47,PKG5612,0,4.4°C,4.4,48.0,0
-2026-06-05 10:56:48,PKG5985,0,4.3°C,4.3,61.0,0
-2026-06-05 10:56:46,PKG7157,0,1.0°C,1.0,51.0,0
-2026-06-05 10:56:48,PKG7409,0,2.3°C,2.3,65.0,0
-2026-06-05 10:56:45,PKG7545,0,10.7°C,10.7,40.0,0
-2026-06-05 10:56:45,PKG7965,0,-3.1°C,-3.1,86.0,0
-2026-06-05 10:56:48,PKG8088,0,8.7°C,8.7,37.0,0
-2026-06-05 10:56:46,PKG8392,0,2.5°C,2.5,61.0,0
-2026-06-05 10:56:48,PKG8577,0,0.7°C,0.7,36.0,0
-2026-06-05 10:56:47,PKG8659,0,21.1°C,21.1,88.0,0
-2026-06-05 10:56:47,PKG8850,0,11.1°C,11.1,51.0,0
-2026-06-05 10:56:45,PKG9987,0,0.7°C,0.7,60.0,0
+2026-06-05 10:35:52,SHP9439,0,21.5°C,21.5,66.0,Delivered
+2026-06-05 10:34:54,SHP9670,0,15.5°C,15.5,62.0,Delayed
