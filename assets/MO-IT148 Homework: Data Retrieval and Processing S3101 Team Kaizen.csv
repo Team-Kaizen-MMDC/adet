@@ -1,26 +1,101 @@
 timestamp,package_id,order_date,expected_delivery_date,origin,current_location,delivery_location,temperature,temperature_celsius,humidity,perishable,temperature_issue,status
+2026-06-18 12:34:36,PKG1191,2026-05-02 23:26:26.862041,2026-05-07 23:26:26.862045,Osaka,Nagoya Central Post Office,Kyoto,-2.0°C,-2.0,74.0,No,Not Applicable,Storage
+2026-06-18 12:34:54,PKG1198,2026-05-02 23:26:26.867367,2026-05-05 23:26:26.867371,Osaka,Osaka Central Post Office,Yokohama,-3.4°C,-3.4,30.0,No,Not Applicable,Hold at Yamato
+2026-06-18 12:34:45,PKG1329,2026-05-02 23:26:26.864535,2026-05-06 23:26:26.864538,Osaka,Osaka Central Post Office,Kyoto,7.9°C,7.9,80.0,Yes,Normal,In Transit
 2026-06-05 11:20:36,PKG1347,2026-04-30 23:26:26.859972,2026-05-07 23:26:26.859975,Nagoya,Nagoya Central Post Office,Tokyo,18.8°C,18.8,76.0,No,Not Applicable,Returned to the sender
+2026-06-18 12:34:31,PKG1643,2026-04-30 23:26:26.860885,2026-05-05 23:26:26.860888,Fukuoka,Sapporo Central Post Office,Tokyo,14.8°C,14.8,74.0,No,Not Applicable,Arrival
+2026-06-18 12:34:39,PKG1689,2026-04-28 23:26:26.862810,2026-05-08 23:26:26.862814,Osaka,Osaka Central Post Office,Osaka,-2.5°C,-2.5,77.0,Yes,Normal,Arrival Scan
+2026-06-18 12:34:46,PKG1717,2026-05-01 23:26:26.864832,2026-05-07 23:26:26.864835,Osaka,Tokyo Central Post Office,Sapporo,-4.6°C,-4.6,47.0,Yes,Normal,Arrival
 2026-06-05 11:20:34,PKG1749,2026-05-02 23:26:26.858823,2026-05-07 23:26:26.858827,Tokyo,Fukuoka Distribution Center,Yokohama,19.6°C,19.6,34.0,Yes,Temperature Alert,Arrival
 2026-06-05 11:20:34,PKG1803,2026-05-03 23:26:26.858921,2026-05-05 23:26:26.858924,Tokyo,Sapporo Central Post Office,Sapporo,22.6°C,22.6,55.0,Yes,Temperature Alert,Hand it over at the window
+2026-06-18 12:34:34,PKG2083,2026-05-01 23:26:26.861610,2026-05-08 23:26:26.861614,Osaka,Yokohama Sales Office,Osaka,1.5°C,1.5,63.0,No,Not Applicable,Storage
 2026-06-05 11:20:34,PKG2151,2026-05-01 23:26:26.859026,2026-05-06 23:26:26.859030,Osaka,Yokohama Sales Office,Yokohama,23.0°C,23.0,89.0,No,Not Applicable,In Transit
+2026-06-18 12:34:50,PKG2183,2026-04-30 23:26:26.866095,2026-05-05 23:26:26.866098,Fukuoka,Osaka Central Post Office,Osaka,24.5°C,24.5,35.0,No,Not Applicable,Delay
+2026-06-18 12:34:31,PKG2220,2026-05-01 23:26:26.860788,2026-05-08 23:26:26.860792,Fukuoka,Nagoya Central Post Office,Sapporo,14.2°C,14.2,85.0,No,Not Applicable,Delivered to the delivery address
+2026-06-18 12:34:50,PKG2282,2026-04-29 23:26:26.866203,2026-05-07 23:26:26.866206,Osaka,Fukuoka Distribution Center,Osaka,5.1°C,5.1,30.0,No,Not Applicable,Bring it back due to your absence
+2026-06-18 12:34:56,PKG2329,2026-04-30 23:26:26.867887,2026-05-05 23:26:26.867891,Fukuoka,Naha Central Post Office,Osaka,4.2°C,4.2,84.0,No,Not Applicable,Hold at Yamato
 2026-06-05 11:20:35,PKG2377,2026-04-30 23:26:26.859462,2026-05-08 23:26:26.859466,Nagoya,Osaka Central Post Office,Sapporo,9.4°C,9.4,81.0,No,Not Applicable,Returned
+2026-06-18 12:34:44,PKG2439,2026-04-29 23:26:26.864145,2026-05-07 23:26:26.864149,Osaka,Yokohama Sales Office,Osaka,9.8°C,9.8,76.0,No,Not Applicable,In Transit
+2026-06-18 12:34:35,PKG2550,2026-04-28 23:26:26.861712,2026-05-06 23:26:26.861715,Osaka,Naha Central Post Office,Osaka,11.2°C,11.2,65.0,No,Not Applicable,Delay
 2026-06-05 11:20:35,PKG2585,2026-05-02 23:26:26.859138,2026-05-05 23:26:26.859141,Tokyo,Yokohama Sales Office,Yokohama,8.3°C,8.3,73.0,Yes,Temperature Alert,Arrival Scan
 2026-06-05 11:20:33,PKG2659,2026-04-28 23:26:26.858141,2026-05-07 23:26:26.858146,Tokyo,Nagoya Central Post Office,Kyoto,6.2°C,6.2,82.0,Yes,Normal,Arrival
 2026-06-05 11:20:37,PKG2762,2026-04-28 23:26:26.860183,2026-05-05 23:26:26.860187,Osaka,Yokohama Sales Office,Osaka,-2.5°C,-2.5,77.0,Yes,Normal,Arrival Scan
+2026-06-18 12:34:30,PKG2775,2026-04-29 23:26:26.860691,2026-05-05 23:26:26.860695,Fukuoka,Osaka Central Post Office,Tokyo,3.2°C,3.2,61.0,No,Not Applicable,Under Investigation
 2026-06-05 11:20:34,PKG2808,2026-05-01 23:26:26.858720,2026-05-07 23:26:26.858723,Tokyo,Naha Central Post Office,Yokohama,0.9°C,0.9,48.0,Yes,Normal,Delay
+2026-06-18 12:34:35,PKG2886,2026-05-02 23:26:26.861940,2026-05-05 23:26:26.861943,Tokyo,Sapporo Central Post Office,Sapporo,11.7°C,11.7,35.0,No,Not Applicable,Returned
+2026-06-18 12:34:47,PKG2894,2026-05-02 23:26:26.865221,2026-05-05 23:26:26.865224,Fukuoka,Naha Central Post Office,Kyoto,3.7°C,3.7,34.0,Yes,Normal,Hand it over at the window
+2026-06-18 12:34:33,PKG2956,2026-04-29 23:26:26.861397,2026-05-05 23:26:26.861400,Fukuoka,Naha Central Post Office,Osaka,22.2°C,22.2,82.0,Yes,Temperature Alert,Returned
+2026-06-18 12:34:37,PKG2989,2026-04-28 23:26:26.862427,2026-05-06 23:26:26.862430,Nagoya,Yokohama Sales Office,Tokyo,1.7°C,1.7,66.0,Yes,Normal,Bring it back due to your absence
+2026-06-18 12:34:38,PKG3002,2026-04-30 23:26:26.862521,2026-05-05 23:26:26.862524,Nagoya,Sapporo Central Post Office,Yokohama,2.0°C,2.0,63.0,Yes,Normal,Out for Delivery
+2026-06-18 12:34:54,PKG3150,2026-05-01 23:26:26.867274,2026-05-08 23:26:26.867277,Fukuoka,Osaka Central Post Office,Kyoto,20.4°C,20.4,53.0,No,Not Applicable,Out for Delivery
+2026-06-18 12:34:57,PKG3165,2026-04-30 23:26:26.868197,2026-05-05 23:26:26.868200,Tokyo,Naha Central Post Office,Kyoto,14.8°C,14.8,78.0,No,Not Applicable,Returned
+2026-06-18 12:34:44,PKG3231,2026-04-29 23:26:26.864239,2026-05-07 23:26:26.864242,Osaka,Naha Central Post Office,Osaka,14.6°C,14.6,71.0,Yes,Temperature Alert,Hand it over at the window
 2026-06-05 11:20:35,PKG3244,2026-04-28 23:26:26.859566,2026-05-08 23:26:26.859570,Nagoya,Fukuoka Distribution Center,Sapporo,2.0°C,2.0,60.0,No,Not Applicable,Returned
+2026-06-18 12:34:44,PKG3309,2026-04-28 23:26:26.864340,2026-05-08 23:26:26.864343,Tokyo,Sapporo Central Post Office,Osaka,0.6°C,0.6,47.0,No,Not Applicable,Returned
+2026-06-18 12:34:39,PKG3400,2026-05-01 23:26:26.862905,2026-05-08 23:26:26.862908,Osaka,Osaka Central Post Office,Kyoto,-0.2°C,-0.2,63.0,Yes,Normal,Hand it over at the window
+2026-06-18 12:34:46,PKG3405,2026-05-03 23:26:26.864933,2026-05-06 23:26:26.864936,Nagoya,Sapporo Central Post Office,Sapporo,7.7°C,7.7,49.0,No,Not Applicable,Under Investigation
+2026-06-18 12:34:53,PKG3680,2026-05-01 23:26:26.867080,2026-05-08 23:26:26.867083,Tokyo,Yokohama Sales Office,Sapporo,-4.0°C,-4.0,78.0,No,Not Applicable,Out for Delivery
+2026-06-18 12:34:50,PKG3700,2026-05-02 23:26:26.865985,2026-05-05 23:26:26.865988,Tokyo,Fukuoka Distribution Center,Yokohama,15.6°C,15.6,55.0,No,Not Applicable,Hold at Yamato
+2026-06-18 12:34:33,PKG3751,2026-04-28 23:26:26.861295,2026-05-08 23:26:26.861298,Nagoya,Sapporo Central Post Office,Osaka,16.3°C,16.3,76.0,No,Not Applicable,Departure Scan
+2026-06-18 12:34:41,PKG3928,2026-05-02 23:26:26.863318,2026-05-08 23:26:26.863321,Osaka,Naha Central Post Office,Kyoto,7.7°C,7.7,87.0,Yes,Normal,Bring it back due to your absence
+2026-06-18 12:34:49,PKG3962,2026-04-30 23:26:26.865670,2026-05-07 23:26:26.865673,Osaka,Fukuoka Distribution Center,Tokyo,16.5°C,16.5,51.0,Yes,Temperature Alert,Returned to the sender
 2026-06-05 11:20:36,PKG4196,2026-04-29 23:26:26.859685,2026-05-07 23:26:26.859688,Tokyo,Naha Central Post Office,Osaka,14.5°C,14.5,62.0,Yes,Temperature Alert,Storage
+2026-06-18 12:34:41,PKG4344,2026-04-29 23:26:26.863531,2026-05-06 23:26:26.863534,Osaka,Tokyo Central Post Office,Kyoto,3.2°C,3.2,78.0,No,Not Applicable,Returned
+2026-06-18 12:34:52,PKG4377,2026-05-03 23:26:26.866593,2026-05-08 23:26:26.866596,Fukuoka,Sapporo Central Post Office,Kyoto,16.3°C,16.3,56.0,No,Not Applicable,Out for Delivery
+2026-06-18 12:34:47,PKG4781,2026-05-01 23:26:26.865033,2026-05-07 23:26:26.865036,Tokyo,Fukuoka Distribution Center,Sapporo,21.1°C,21.1,53.0,Yes,Temperature Alert,Bring it back due to your absence
 2026-06-05 11:20:33,PKG5296,2026-05-03 23:26:26.858370,2026-05-05 23:26:26.858374,Fukuoka,Sapporo Central Post Office,Sapporo,6.3°C,6.3,87.0,Yes,Normal,Delivered to the delivery address
+2026-06-18 12:34:51,PKG5334,2026-05-03 23:26:26.866498,2026-05-06 23:26:26.866502,Fukuoka,Yokohama Sales Office,Sapporo,10.8°C,10.8,51.0,Yes,Temperature Alert,Delivered
+2026-06-18 12:34:39,PKG5481,2026-04-28 23:26:26.863000,2026-05-07 23:26:26.863003,Tokyo,Fukuoka Distribution Center,Kyoto,19.6°C,19.6,78.0,Yes,Temperature Alert,Delivered to the delivery address
 2026-06-05 11:20:37,PKG5517,2026-05-01 23:26:26.860382,2026-05-08 23:26:26.860385,Tokyo,Yokohama Sales Office,Osaka,-2.4°C,-2.4,85.0,No,Not Applicable,Delay
 2026-06-05 11:20:35,PKG5612,2026-05-03 23:26:26.859359,2026-05-05 23:26:26.859363,Osaka,Naha Central Post Office,Tokyo,4.4°C,4.4,48.0,Yes,Normal,Bring it back due to your absence
+2026-06-18 12:34:49,PKG5645,2026-05-01 23:26:26.865772,2026-05-06 23:26:26.865775,Osaka,Tokyo Central Post Office,Sapporo,13.9°C,13.9,77.0,Yes,Temperature Alert,Delay
+2026-06-18 12:34:52,PKG5718,2026-04-29 23:26:26.866791,2026-05-07 23:26:26.866794,Fukuoka,Yokohama Sales Office,Sapporo,14.3°C,14.3,51.0,No,Not Applicable,Bring it back due to your absence
+2026-06-18 12:34:40,PKG5863,2026-04-28 23:26:26.863216,2026-05-08 23:26:26.863219,Nagoya,Naha Central Post Office,Yokohama,3.4°C,3.4,62.0,Yes,Normal,Hand it over at the window
+2026-06-18 12:34:38,PKG5872,2026-05-01 23:26:26.862616,2026-05-08 23:26:26.862620,Osaka,Tokyo Central Post Office,Kyoto,9.1°C,9.1,82.0,Yes,Temperature Alert,Arrival Scan
 2026-06-05 11:20:37,PKG5985,2026-04-30 23:26:26.860590,2026-05-08 23:26:26.860593,Nagoya,Tokyo Central Post Office,Sapporo,4.3°C,4.3,61.0,Yes,Normal,Returned
+2026-06-18 12:34:43,PKG6108,2026-05-02 23:26:26.864021,2026-05-06 23:26:26.864025,Nagoya,Fukuoka Distribution Center,Osaka,-1.3°C,-1.3,86.0,No,Not Applicable,Hold at Yamato
+2026-06-18 12:34:53,PKG6149,2026-04-28 23:26:26.866985,2026-05-07 23:26:26.866989,Nagoya,Nagoya Central Post Office,Sapporo,4.3°C,4.3,36.0,Yes,Normal,Bring it back due to your absence
+2026-06-18 12:34:43,PKG6155,2026-04-30 23:26:26.863925,2026-05-05 23:26:26.863928,Tokyo,Sapporo Central Post Office,Osaka,2.8°C,2.8,77.0,Yes,Normal,Returned to the sender
+2026-06-18 12:34:48,PKG6235,2026-05-03 23:26:26.865567,2026-05-06 23:26:26.865571,Tokyo,Nagoya Central Post Office,Osaka,17.1°C,17.1,71.0,Yes,Temperature Alert,Arrival
+2026-06-18 12:34:56,PKG6240,2026-04-29 23:26:26.867982,2026-05-08 23:26:26.867985,Nagoya,Osaka Central Post Office,Osaka,6.2°C,6.2,61.0,Yes,Normal,Hold at Yamato
+2026-06-18 12:34:32,PKG6691,2026-05-01 23:26:26.861100,2026-05-07 23:26:26.861103,Osaka,Sapporo Central Post Office,Kyoto,11.6°C,11.6,61.0,Yes,Temperature Alert,Bring it back due to your absence
+2026-06-18 12:34:45,PKG6811,2026-05-01 23:26:26.864629,2026-05-07 23:26:26.864632,Osaka,Osaka Central Post Office,Kyoto,10.9°C,10.9,75.0,Yes,Temperature Alert,Hold at Yamato
+2026-06-18 12:34:56,PKG6957,2026-05-01 23:26:26.868085,2026-05-08 23:26:26.868088,Nagoya,Yokohama Sales Office,Osaka,4.1°C,4.1,58.0,No,Not Applicable,Returned to the sender
 2026-06-05 11:20:35,PKG7157,2026-04-29 23:26:26.859235,2026-05-08 23:26:26.859239,Fukuoka,Yokohama Sales Office,Osaka,1.0°C,1.0,51.0,Yes,Normal,Hand it over at the window
+2026-06-18 12:34:55,PKG7192,2026-04-29 23:26:26.867569,2026-05-05 23:26:26.867573,Fukuoka,Sapporo Central Post Office,Osaka,0.5°C,0.5,60.0,No,Not Applicable,Delivered
+2026-06-18 12:34:33,PKG7202,2026-04-29 23:26:26.861199,2026-05-05 23:26:26.861203,Fukuoka,Osaka Central Post Office,Sapporo,3.7°C,3.7,47.0,No,Not Applicable,Arrival Scan
+2026-06-18 12:34:49,PKG7297,2026-04-30 23:26:26.865877,2026-05-07 23:26:26.865880,Nagoya,Osaka Central Post Office,Sapporo,16.4°C,16.4,69.0,Yes,Temperature Alert,Arrival Scan
+2026-06-18 12:34:53,PKG7307,2026-04-30 23:26:26.866884,2026-05-05 23:26:26.866888,Nagoya,Nagoya Central Post Office,Sapporo,20.0°C,20.0,43.0,No,Not Applicable,Delivered to the delivery address
 2026-06-05 11:20:37,PKG7409,2026-04-29 23:26:26.860487,2026-05-07 23:26:26.860491,Fukuoka,Sapporo Central Post Office,Kyoto,2.3°C,2.3,65.0,Yes,Normal,Arrival
+2026-06-18 12:34:42,PKG7455,2026-04-29 23:26:26.863718,2026-05-07 23:26:26.863721,Fukuoka,Fukuoka Distribution Center,Tokyo,7.2°C,7.2,33.0,No,Not Applicable,Delivered
+2026-06-18 12:34:51,PKG7489,2026-04-30 23:26:26.866304,2026-05-07 23:26:26.866307,Nagoya,Nagoya Central Post Office,Sapporo,3.7°C,3.7,50.0,No,Not Applicable,Returned
+2026-06-18 12:34:51,PKG7532,2026-04-30 23:26:26.866405,2026-05-06 23:26:26.866408,Nagoya,Nagoya Central Post Office,Yokohama,2.0°C,2.0,40.0,No,Not Applicable,Under Investigation
 2026-06-05 11:20:33,PKG7545,2026-04-29 23:26:26.858009,2026-05-05 23:26:26.858015,Tokyo,Naha Central Post Office,Tokyo,10.7°C,10.7,40.0,No,Not Applicable,Out for Delivery
+2026-06-18 12:34:34,PKG7681,2026-05-01 23:26:26.861510,2026-05-08 23:26:26.861513,Nagoya,Nagoya Central Post Office,Tokyo,12.5°C,12.5,66.0,Yes,Temperature Alert,Delay
+2026-06-18 12:34:56,PKG7815,2026-04-30 23:26:26.867788,2026-05-08 23:26:26.867791,Tokyo,Naha Central Post Office,Tokyo,-2.1°C,-2.1,39.0,No,Not Applicable,Returned to the sender
+2026-06-18 12:34:37,PKG7953,2026-05-02 23:26:26.862325,2026-05-08 23:26:26.862328,Fukuoka,Nagoya Central Post Office,Sapporo,10.8°C,10.8,62.0,No,Not Applicable,Arrival
 2026-06-05 11:20:33,PKG7965,2026-05-03 23:26:26.858267,2026-05-08 23:26:26.858271,Osaka,Nagoya Central Post Office,Osaka,-3.1°C,-3.1,86.0,Yes,Normal,Storage
+2026-06-18 12:34:40,PKG7973,2026-05-01 23:26:26.863108,2026-05-08 23:26:26.863111,Nagoya,Naha Central Post Office,Kyoto,-1.8°C,-1.8,66.0,No,Not Applicable,Arrival Scan
+2026-06-18 12:34:42,PKG8002,2026-04-30 23:26:26.863819,2026-05-07 23:26:26.863822,Fukuoka,Tokyo Central Post Office,Sapporo,-1.5°C,-1.5,69.0,Yes,Normal,Bring it back due to your absence
+2026-06-18 12:34:37,PKG8059,2026-05-01 23:26:26.862231,2026-05-08 23:26:26.862234,Osaka,Fukuoka Distribution Center,Tokyo,-1.1°C,-1.1,72.0,Yes,Normal,Out for Delivery
 2026-06-05 11:20:37,PKG8088,2026-05-03 23:26:26.860073,2026-05-06 23:26:26.860077,Osaka,Tokyo Central Post Office,Kyoto,8.7°C,8.7,37.0,No,Not Applicable,Under Investigation
+2026-06-18 12:34:35,PKG8155,2026-04-29 23:26:26.861839,2026-05-07 23:26:26.861842,Tokyo,Naha Central Post Office,Osaka,9.8°C,9.8,51.0,Yes,Temperature Alert,Departure Scan
+2026-06-18 12:34:41,PKG8254,2026-04-30 23:26:26.863411,2026-05-08 23:26:26.863415,Nagoya,Nagoya Central Post Office,Yokohama,11.1°C,11.1,44.0,No,Not Applicable,Delivered to the delivery address
 2026-06-05 11:20:34,PKG8392,2026-04-28 23:26:26.858609,2026-05-08 23:26:26.858613,Osaka,Nagoya Central Post Office,Kyoto,2.5°C,2.5,61.0,Yes,Normal,Hold at Yamato
+2026-06-18 12:34:54,PKG8417,2026-05-01 23:26:26.867180,2026-05-08 23:26:26.867183,Tokyo,Tokyo Central Post Office,Sapporo,7.6°C,7.6,74.0,No,Not Applicable,Returned
+2026-06-18 12:34:48,PKG8480,2026-04-28 23:26:26.865474,2026-05-06 23:26:26.865477,Nagoya,Tokyo Central Post Office,Osaka,9.9°C,9.9,50.0,Yes,Temperature Alert,Storage
 2026-06-05 11:20:37,PKG8577,2026-04-30 23:26:26.860279,2026-05-05 23:26:26.860283,Tokyo,Naha Central Post Office,Tokyo,0.7°C,0.7,36.0,Yes,Normal,Hand it over at the window
+2026-06-18 12:34:38,PKG8631,2026-05-01 23:26:26.862711,2026-05-06 23:26:26.862715,Fukuoka,Naha Central Post Office,Sapporo,19.8°C,19.8,35.0,No,Not Applicable,Returned to the sender
 2026-06-05 11:20:36,PKG8659,2026-04-30 23:26:26.859876,2026-05-08 23:26:26.859880,Fukuoka,Fukuoka Distribution Center,Tokyo,21.1°C,21.1,88.0,No,Not Applicable,Hold at Yamato
 2026-06-05 11:20:36,PKG8850,2026-05-02 23:26:26.859781,2026-05-06 23:26:26.859784,Fukuoka,Nagoya Central Post Office,Osaka,11.1°C,11.1,51.0,Yes,Temperature Alert,Delivered
+2026-06-18 12:34:54,PKG9015,2026-05-03 23:26:26.867468,2026-05-08 23:26:26.867471,Osaka,Yokohama Sales Office,Osaka,12.2°C,12.2,78.0,Yes,Temperature Alert,Delay
+2026-06-18 12:34:42,PKG9080,2026-05-03 23:26:26.863624,2026-05-08 23:26:26.863627,Fukuoka,Sapporo Central Post Office,Yokohama,8.0°C,8.0,68.0,Yes,Normal,Returned to the sender
+2026-06-18 12:34:32,PKG9122,2026-04-28 23:26:26.860998,2026-05-06 23:26:26.861002,Tokyo,Tokyo Central Post Office,Osaka,22.3°C,22.3,47.0,No,Not Applicable,Delay
+2026-06-18 12:34:46,PKG9244,2026-05-02 23:26:26.864738,2026-05-06 23:26:26.864741,Osaka,Naha Central Post Office,Yokohama,20.1°C,20.1,34.0,Yes,Temperature Alert,Returned to the sender
+2026-06-18 12:34:45,PKG9257,2026-04-29 23:26:26.864441,2026-05-08 23:26:26.864444,Nagoya,Yokohama Sales Office,Tokyo,8.1°C,8.1,76.0,Yes,Temperature Alert,Bring it back due to your absence
+2026-06-18 12:34:47,PKG9294,2026-05-01 23:26:26.865127,2026-05-07 23:26:26.865130,Osaka,Sapporo Central Post Office,Tokyo,6.9°C,6.9,36.0,Yes,Normal,Hand it over at the window
+2026-06-18 12:34:48,PKG9355,2026-04-29 23:26:26.865350,2026-05-07 23:26:26.865354,Fukuoka,Fukuoka Distribution Center,Tokyo,4.0°C,4.0,70.0,No,Not Applicable,Bring it back due to your absence
+2026-06-18 12:34:52,PKG9509,2026-04-29 23:26:26.866690,2026-05-05 23:26:26.866694,Osaka,Tokyo Central Post Office,Osaka,2.8°C,2.8,43.0,Yes,Normal,Out for Delivery
+2026-06-18 12:34:36,PKG9613,2026-04-29 23:26:26.862136,2026-05-07 23:26:26.862139,Osaka,Nagoya Central Post Office,Osaka,2.2°C,2.2,72.0,Yes,Normal,Hold at Yamato
+2026-06-18 12:34:55,PKG9742,2026-05-01 23:26:26.867692,2026-05-06 23:26:26.867696,Fukuoka,Naha Central Post Office,Tokyo,-0.5°C,-0.5,68.0,No,Not Applicable,Hold at Yamato
 2026-06-05 11:20:33,PKG9987,2026-05-03 23:26:26.858492,2026-05-07 23:26:26.858501,Fukuoka,Yokohama Sales Office,Sapporo,0.7°C,0.7,60.0,No,Not Applicable,Bring it back due to your absence
