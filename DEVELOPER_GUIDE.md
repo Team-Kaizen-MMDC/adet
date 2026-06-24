@@ -1,10 +1,10 @@
 # Developer Guide
 
-This guide is for team members who need to run, adjust, or troubleshoot the Smart Logistics Tracking notebooks in this repository.
+This guide is for team members who need to run, adjust, or troubleshoot the **Kaizen Logistics Smart Package Monitoring & Tracking** workflow.
 
 ## Project purpose
 
-The project simulates package-level logistics data for **Kaizen Logistics**, stores 100 IoT package records on a local blockchain through Ganache and Remix, retrieves the blockchain records into Python, validates the retrieved ledger against the original CSV, cleans the data for analysis, and prepares the outputs for Python and Tableau visualizations.
+The project simulates package-level logistics data for **Kaizen Logistics**, stores 100 IoT package records on a local blockchain through Ganache and Remix, retrieves the blockchain records into Python, validates the retrieved ledger against the original CSV, cleans the data for analysis, and prepares the outputs for Week 7 line plots and Tableau dashboard visualization.
 
 ## Current workflow overview
 
@@ -21,7 +21,8 @@ flowchart TD
     I --> J[Run Week 6 Data Retrieval and Processing]
     J --> K[Export assets/cleaned_iot_data.csv]
     K --> L[Run Week 7 Line Plot Notebook]
-    K --> M[Build Tableau Dashboard]
+    K --> M[Prepare Tableau Event-Level CSV]
+    M --> N[Build Tableau Dashboard]
 ```
 
 ## Main files and responsibilities
@@ -37,45 +38,68 @@ flowchart TD
 | `IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.csv` | Retrieved and decoded blockchain ledger records in CSV format. |
 | `IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.json` | Retrieved and decoded blockchain ledger records in JSON format. |
 | `IOT Data Simulation/kaizenlogistics_blockchain_transactions.csv` | Transaction hash log for the blockchain write process. |
-| `week_6_HomeworkDataRetrievalandProcessing.ipynb` | Cleans and processes the retrieved ledger records for visualization readiness. |
-| `assets/cleaned_iot_data.csv` | Final cleaned Week 6 output used by Week 7 and visualization work. |
+| `week_6_HomeworkDataRetrievalandProcessing.ipynb` | Cleans and processes retrieved ledger records for visualization readiness. |
+| `assets/cleaned_iot_data.csv` | Final cleaned Week 6 output used by Week 7. |
 | `week7_LinePlotofIoTSensorReadingsOverTime.ipynb` | Produces line plots for IoT sensor readings over time. |
+| `tableau_kaizen_logistics_tracking_events.csv` | Tableau-specific event-level data for route tracking and dashboard interactivity. |
+| `docs/IMPROVEMENTS.md` | Improvement log for the current project state. |
+| `docs/tableau_storytelling_iot_sensors.md` | Tableau dashboard storyboard, layout, color scheme, and talking points. |
 
 ## Environment setup
 
 Use a virtual environment or Conda environment, then install the required packages:
 
 ```bash
-source .venv/bin/activate
-python3 -m pip install jupyter pandas numpy matplotlib seaborn web3 python-dotenv
+python -m pip install jupyter pandas numpy matplotlib seaborn web3 python-dotenv
 ```
 
-If using Conda, activate the correct environment first:
+If using Conda:
 
 ```bash
 conda activate <environment-name>
 python -m pip install jupyter pandas numpy matplotlib seaborn web3 python-dotenv
 ```
 
-If dependencies change, update `requirements.txt` if the team is maintaining one:
+If dependencies change and the team is maintaining a `requirements.txt`, update it with:
 
 ```bash
 python -m pip freeze > requirements.txt
 ```
 
+## Path conventions
+
+Use relative paths from the repository root when possible.
+
+Recommended paths:
+
+```text
+contracts/IoTDataStorage.sol
+contracts/abi.json
+IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.csv
+IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.json
+IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.csv
+IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.json
+IOT Data Simulation/kaizenlogistics_blockchain_transactions.csv
+assets/cleaned_iot_data.csv
+tableau_kaizen_logistics_tracking_events.csv
+```
+
+Avoid hardcoding local machine paths such as:
+
+```text
+/Users/<username>/...
+```
+
+Local absolute paths can break when another teammate clones the repository.
+
 ## Ganache and Remix setup
 
 1. Open Ganache.
 2. Start a local workspace or Quickstart Ethereum chain.
-3. Confirm the RPC server shown in Ganache, commonly:
+3. Confirm the RPC server shown in Ganache. It is commonly one of these:
 
 ```text
 http://127.0.0.1:7545
-```
-
-or:
-
-```text
 http://127.0.0.1:8545
 ```
 
@@ -91,7 +115,7 @@ http://127.0.0.1:8545
 
 ## Smart contract storage format
 
-The current blockchain approach stores one smart contract record per package row.
+The current blockchain approach stores **one smart contract record per package row**.
 
 Each blockchain record uses the contract fields:
 
@@ -108,7 +132,7 @@ For the Kaizen Logistics dataset:
 - `data_type` is stored as `PackageRecord`.
 - `data_value` stores the full package row as a JSON string.
 
-This lets the project preserve the full CSV row while still using the simple contract structure from the coursework template.
+This lets the project preserve the full CSV row while still using a simple contract structure suitable for the coursework template.
 
 ## Milestone 1 notebook flow
 
@@ -149,6 +173,24 @@ IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.json
 IOT Data Simulation/kaizenlogistics_blockchain_transactions.csv
 ```
 
+## Important Milestone 1 validation notes
+
+The decoded ledger output should preserve the original CSV column order when exported.
+
+The validation step should confirm:
+
+```text
+CSV-to-ledger record match: True
+All 100 CSV records match the retrieved blockchain ledger records.
+```
+
+If the validation fails, check:
+
+1. Whether the source CSV was changed after blockchain storage.
+2. Whether the decoded ledger column order matches the source CSV.
+3. Whether blank values and `nan` values were handled consistently.
+4. Whether the contract address points to the correct deployed contract.
+
 ## Week 6 notebook flow
 
 Notebook:
@@ -159,9 +201,9 @@ week_6_HomeworkDataRetrievalandProcessing.ipynb
 
 Purpose:
 
-- retrieve or load the Milestone 1 blockchain ledger output,
+- load or retrieve the Milestone 1 blockchain ledger output,
 - decode and structure package records,
-- remove blockchain-only columns that are not needed for visualization,
+- remove blockchain-only helper columns that are not needed for visualization,
 - standardize numeric formatting where appropriate,
 - preserve latitude and longitude precision,
 - prepare the dataset for Week 7 and visualization tasks,
@@ -179,7 +221,8 @@ Important cleaning notes:
 - Keep temperature and percent fields numeric.
 - Format non-coordinate decimal fields consistently to 2 decimal places when exported.
 - Preserve latitude and longitude precision for Tableau map plotting.
-- Keep blank or missing exception reasons consistent with the dataset logic.
+- Keep missing exception reasons consistent with the dataset logic.
+- Do not overwrite the official Week 6 output only for Tableau experimentation. Use a separate Tableau CSV for dashboard-specific needs.
 
 ## Week 7 notebook flow
 
@@ -193,7 +236,7 @@ Purpose:
 
 - load `assets/cleaned_iot_data.csv`,
 - convert timestamp fields to datetime,
-- create clean line plot visualizations for IoT readings over time,
+- create clean line plot visualizations for IoT sensor readings over time,
 - support the dashboard story by showing package temperature and sensor trends.
 
 Expected input:
@@ -202,11 +245,36 @@ Expected input:
 assets/cleaned_iot_data.csv
 ```
 
+Recommended Week 7 chart focus:
+
+- temperature over time,
+- temperature by package status,
+- temperature by perishable classification,
+- clean date/time labels,
+- readable titles and axis labels.
+
 ## Tableau dashboard workflow
 
 The Tableau dashboard is published here:
 
 [Kaizen Logistics Smart Package Monitoring & Tracking Dashboard](https://public.tableau.com/views/MO-IT148Milestone2SmartTrackingSystemDashboardSubmissionS3101TeamKaizen/MAINDASHBOARD?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
+Use the Tableau-specific event-level CSV for dashboard construction:
+
+```text
+tableau_kaizen_logistics_tracking_events.csv
+```
+
+This CSV supports:
+
+- one row per tracking event,
+- route path ordering,
+- event status coloring,
+- map tooltips,
+- dashboard filters,
+- KPI calculations,
+- sensor monitoring charts,
+- exception monitoring charts.
 
 Recommended Tableau dashboard pages:
 
@@ -223,27 +291,75 @@ Recommended main dashboard story:
 - Temperature condition distribution summarizes Ambient, Cool, and Danger Zone shares.
 - Filters allow users to inspect package ID, perishable status, final status, event status, and event timestamp.
 
-## Path conventions
+## Tableau map setup notes
 
-Use relative paths from the repository root where possible.
-
-Recommended paths:
+Recommended map title:
 
 ```text
-contracts/IoTDataStorage.sol
-contracts/abi.json
-IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.csv
-IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.csv
-assets/cleaned_iot_data.csv
+Japan Smart Shipment Route Map
 ```
 
-Avoid hardcoding local machine paths such as:
+Recommended dual-layer setup:
+
+### Route line layer
 
 ```text
-/Users/<username>/...
+Marks Type: Line
+Detail: map_path_id, package_id
+Path: map_path_order
+Color: muted gray or final_status
+Size: thin
+Opacity: 35% to 45%
 ```
 
-Local absolute paths can break when another teammate clones the repository.
+### Event point layer
+
+```text
+Marks Type: Circle
+Color: event_status
+Detail: package_id, event_type
+Tooltip: package, event, location, timestamp, temperature, RFID, final status, exception reason
+```
+
+Recommended route line color for the main dashboard:
+
+```text
+#8A8A8A
+```
+
+This keeps the all-packages route map readable and prevents the map from overwhelming the dashboard.
+
+## Suggested Tableau color scheme
+
+### Base dashboard theme
+
+| Use | Hex |
+|---|---:|
+| Brand dark red | `#B00000` |
+| Dark maroon | `#7A0000` |
+| White panel | `#FFFFFF` |
+| Light gray background | `#E6E6E6` |
+| Medium gray border | `#C9C9C9` |
+| Dark text | `#333333` |
+
+### Temperature condition colors
+
+| Temperature Issue | Hex |
+|---|---:|
+| Ambient | `#BFC0C0` |
+| Cool | `#6C8EA4` |
+| Danger Zone | `#B00000` |
+
+### Event status colors
+
+| Event Status | Hex |
+|---|---:|
+| Order Placed | `#BFC0C0` |
+| Picked Up | `#D9A441` |
+| In Transit | `#A65E00` |
+| Out for Delivery | `#9E3D3F` |
+| Delivered | `#5E6F64` |
+| Not Delivered | `#B00000` |
 
 ## Common problems and fixes
 
@@ -263,133 +379,81 @@ or:
 http://127.0.0.1:8545
 ```
 
-Also confirm that Ganache is open and the workspace is running.
+Also confirm that Ganache is running before executing the notebook.
 
-### Remix External HTTP Provider does not connect
+### Contract address does not work
 
-Use the exact RPC server shown in Ganache. If Ganache shows port `7545`, enter:
+Possible causes:
 
-```text
-http://127.0.0.1:7545
-```
-
-Do not use a different port unless Ganache is configured for it.
-
-### Gas estimation failed during deploy
-
-This may happen when the selected compiler, provider, or contract state is mismatched.
-
-Recommended checks:
-
-1. Confirm Ganache is running.
-2. Confirm Remix is connected to the correct RPC URL.
-3. Compile the contract again.
-4. Confirm the selected contract is `IoTDataStorage`.
-5. Deploy with a Ganache account that has test ETH.
-6. If needed, restart Ganache and redeploy.
-
-### Contract address error
-
-A Ganache contract address is only valid for the current Ganache chain state. If Ganache is restarted or reset, the old deployed contract address may no longer work.
+- Ganache was restarted and the old contract no longer exists.
+- The notebook is pointing to a contract address from a previous chain session.
+- The ABI does not match the deployed contract.
 
 Fix:
 
 1. Redeploy the contract in Remix.
 2. Copy the new contract address.
-3. Update the contract address in the notebook.
-4. Rerun the notebook cells from the contract setup step.
+3. Confirm `contracts/abi.json` matches the deployed contract.
+4. Rerun the notebook from the contract setup cell.
 
-### ABI mismatch
+### `Not authorized`
 
-If the Python notebook cannot call the expected smart contract functions, the ABI may not match the deployed contract.
+The notebook is sending transactions from the wrong account.
 
 Fix:
 
-1. Recompile the latest `IoTDataStorage.sol` in Remix.
-2. Copy the latest ABI.
-3. Replace `contracts/abi.json`.
-4. Redeploy the contract if needed.
-5. Rerun the contract setup cell.
+1. Make sure the deployed contract owner account is available in Ganache.
+2. Set the sender account to the deployer account.
+3. Rerun the contract setup cell.
 
-### CSV file not found
+### Contract storage is already full
 
-Confirm that the notebook is being run from the repository root and that the file exists in the expected folder.
+The smart contract has reached its maximum entries.
 
-Common expected paths:
+Fix:
 
-```text
-IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.csv
-assets/cleaned_iot_data.csv
-```
+1. Restart Ganache for a clean local chain.
+2. Redeploy the contract.
+3. Update the contract address in the notebook.
+4. Rerun the notebook from the start.
 
 ### CSV-to-ledger validation fails
 
-Possible causes:
+Check:
 
-- The source CSV changed after blockchain storage.
-- The contract already contained records from a previous run.
-- The wrong contract address was used.
-- Records were retrieved from an older Ganache deployment.
+- source CSV file path,
+- column order,
+- blank or missing values,
+- whether the blockchain ledger was generated from the same source CSV,
+- whether package IDs were sorted consistently before comparison.
 
-Fix:
+### Tableau route map looks messy
 
-1. Confirm the source CSV is the correct version.
-2. Restart Ganache if a fresh chain is needed.
-3. Redeploy the contract.
-4. Update the contract address.
-5. Rerun Milestone 1 from the beginning.
+For the main dashboard:
 
-### Exported CSV has blank cells instead of `None`
+- use thin gray route lines,
+- lower route line opacity,
+- keep event status colors on circle points,
+- remove package labels unless filtering to one package,
+- use the `Package Id` filter to inspect individual journeys.
 
-Blank values are normal CSV behavior for missing values. For visualization, Tableau and Python can interpret them as null or blank values. If a literal string is required, replace missing values before export with:
+## Documentation maintenance checklist
 
-```python
-df = df.fillna("None")
+Update these files when major workflow changes are made:
+
+```text
+README.md
+DEVELOPER_GUIDE.md
+docs/IMPROVEMENTS.md
+docs/tableau_storytelling_iot_sensors.md
 ```
 
-Use this only when the output needs the text value `None`, because replacing nulls with text can affect numeric or analytical processing.
+Update documentation when:
 
-## Resetting for a clean blockchain run
-
-If the blockchain needs to be cleared, restart Ganache and redeploy the smart contract. The current contract does not include a reset or delete function.
-
-```mermaid
-flowchart TD
-    A[Need clean blockchain state] --> B[Stop or reset Ganache]
-    B --> C[Start Ganache workspace]
-    C --> D[Deploy IoTDataStorage.sol in Remix]
-    D --> E[Copy new contract address]
-    E --> F[Update notebook contract address]
-    F --> G[Rerun Milestone 1 notebook]
-```
-
-## Suggested branch workflow
-
-For a new set of updates:
-
-```bash
-git checkout main
-git pull origin main
-git checkout -b feature/update-logistics-docs-and-dashboard-assets
-```
-
-After edits:
-
-```bash
-git status
-git add README.md DEVELOPER_GUIDE.md assets/cleaned_iot_data.csv "IOT Data Simulation" contracts
-
-git commit -m "docs: update logistics tracking project documentation"
-git push origin feature/update-logistics-docs-and-dashboard-assets
-```
-
-Then open a pull request into `main` or into the team integration branch, depending on the agreed workflow.
-
-## Editing tips
-
-- Keep paths relative to the repository root.
-- Update `README.md` when the project structure changes.
-- Update this guide when notebook steps, contract logic, or output files change.
-- Keep notebook outputs readable enough for worksheet screenshots.
-- Keep dashboard-related exports separate from homework outputs when the Tableau data requires additional fields.
-- Do not commit `.env`, notebook checkpoints, or machine-specific files.
+- dataset filenames change,
+- notebook filenames change,
+- smart contract logic changes,
+- ABI path changes,
+- Tableau dashboard link changes,
+- output CSV/JSON filenames change,
+- dashboard story or layout changes.

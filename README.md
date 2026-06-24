@@ -1,159 +1,34 @@
-# ADET Smart Logistics Tracking System
+# ADET Smart Logistics Tracking Project
 
 ![Project Version](https://img.shields.io/badge/version-0.2.0-blue)
 ![Python Version](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)
-![Notebook Version](https://img.shields.io/badge/notebooks-v2-F37626?logo=jupyter&logoColor=white)
-![Solidity](https://img.shields.io/badge/solidity-0.8.0-363636?logo=solidity&logoColor=white)
-![Tableau](https://img.shields.io/badge/Tableau-Public-E97627?logo=tableau&logoColor=white)
+![Notebook Version](https://img.shields.io/badge/notebooks-Jupyter-F37626?logo=jupyter&logoColor=white)
+![Blockchain](https://img.shields.io/badge/blockchain-Ganache%20%2B%20Solidity-7A0000)
+![Dashboard](https://img.shields.io/badge/dashboard-Tableau%20Public-E97627?logo=tableau&logoColor=white)
 
-This repository contains Team Kaizen's **Smart Logistics Tracking System** project for MO-IT148. The project simulates IoT-enabled logistics data for **Kaizen Logistics**, stores package records on a local blockchain using Ganache and a Solidity smart contract, retrieves and cleans the blockchain records, and visualizes the final logistics insights through Python and Tableau.
+This repository contains the **Kaizen Logistics Smart Package Monitoring & Tracking** project for MO-IT148 Application Development and Emerging Technologies. The project simulates IoT-enabled logistics data, stores package records on a local blockchain through Ganache and Solidity, retrieves and processes the blockchain ledger in Python, and builds dashboard-ready outputs for Tableau visualization.
 
-The project story focuses on a Japan-based logistics company that monitors package movement, delivery status, temperature condition, perishable handling, and RFID tracking reliability.
+## Project scenario
 
-## Tableau Dashboard
+**Kaizen Logistics** is a mock logistics company operating across Japan. The project demonstrates how IoT sensor readings and blockchain-backed records can support package tracking, delivery monitoring, temperature condition tracking, RFID reliability checks, and exception detection.
 
-View the Milestone 2 Tableau dashboard here:
-
-[Kaizen Logistics Smart Package Monitoring & Tracking Dashboard](https://public.tableau.com/views/MO-IT148Milestone2SmartTrackingSystemDashboardSubmissionS3101TeamKaizen/MAINDASHBOARD?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
-
-## Developer guide
-
-If you are working on the blockchain notebook, start with [DEVELOPER_GUIDE.md](DEVELOPER_GUIDE.md). It explains the repository flow, Ganache connection, smart contract setup, notebook execution order, output files, and common troubleshooting steps.
-
-## Current project layout
+The end-to-end workflow is:
 
 ```text
-adet/
-├── archive/
-│   └── older draft notebooks and reference files
-├── assets/
-│   └── cleaned_iot_data.csv
-├── contracts/
-│   ├── IoTDataStorage.sol
-│   └── abi.json
-├── docs/
-│   └── project documentation and improvement notes
-├── IOT Data Simulation/
-│   ├── kaizenlogistics_blockchain_ledger_retrieved.csv
-│   ├── kaizenlogistics_blockchain_ledger_retrieved.json
-│   ├── kaizenlogistics_blockchain_transactions.csv
-│   ├── smart_logistics_tracker_japan_kaizenlogistics.csv
-│   ├── smart_logistics_tracker_japan_kaizenlogistics.ipynb
-│   ├── smart_logistics_tracker_japan_kaizenlogistics.json
-│   └── MS1_Smart_Tracking_System_Blockchain_Ledger_Submission_TeamKaizen.ipynb
-├── README.md
-├── DEVELOPER_GUIDE.md
-├── CONTRIBUTING.md
-├── week_6_HomeworkDataRetrievalandProcessing.ipynb
-└── week7_LinePlotofIoTSensorReadingsOverTime.ipynb
+IoT logistics data simulation
+→ Smart contract deployment
+→ Blockchain ledger storage
+→ Python/Web3.py data retrieval
+→ Data cleaning and validation
+→ Week 7 line plot visualization
+→ Tableau dashboard storytelling
 ```
 
-## Main files
+## Tableau dashboard
 
-| File / Folder | Purpose |
-|---|---|
-| `IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.ipynb` | Generates the simulated Japan logistics dataset for Kaizen Logistics. |
-| `IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.csv` | Main simulated logistics dataset with 100 package records. |
-| `IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.json` | JSON version of the simulated logistics dataset. |
-| `contracts/IoTDataStorage.sol` | Solidity smart contract used to store IoT package records on Ganache. |
-| `contracts/abi.json` | ABI exported from Remix after compiling the smart contract. |
-| `IOT Data Simulation/MS1_Smart_Tracking_System_Blockchain_Ledger_Submission_TeamKaizen.ipynb` | Milestone 1 notebook that connects Python to Ganache, stores 100 package records, retrieves records, validates CSV-to-ledger match, and exports ledger outputs. |
-| `IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.csv` | Retrieved blockchain ledger output in CSV format. |
-| `IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.json` | Retrieved blockchain ledger output in JSON format. |
-| `IOT Data Simulation/kaizenlogistics_blockchain_transactions.csv` | Transaction log generated during blockchain storage. |
-| `week_6_HomeworkDataRetrievalandProcessing.ipynb` | Retrieves and processes blockchain output, cleans fields, removes ledger-only columns, standardizes numeric formatting, and exports the cleaned dataset. |
-| `assets/cleaned_iot_data.csv` | Cleaned Week 6 output used for Week 7 line plots and downstream visualization preparation. |
-| `week7_LinePlotofIoTSensorReadingsOverTime.ipynb` | Creates enhanced line plot visualizations for IoT sensor readings over time. |
+The Tableau dashboard is published here:
 
-## Project workflow
-
-```mermaid
-flowchart TD
-    A[Week 2: Simulate Kaizen Logistics IoT Data] --> B[Week 3: Compile and Deploy Solidity Smart Contract]
-    B --> C[Week 5 / Milestone 1: Store 100 Package Records on Ganache]
-    C --> D[Retrieve Blockchain Ledger Records]
-    D --> E[Validate CSV Records Against Blockchain Ledger]
-    E --> F[Week 6: Clean and Process Retrieved Data]
-    F --> G[Export assets/cleaned_iot_data.csv]
-    G --> H[Week 7: Create Line Plot Visualizations]
-    G --> I[Milestone 2: Build Tableau Dashboard]
-```
-
-## Getting started
-
-Create or activate the project environment, then install the required Python packages:
-
-```bash
-source .venv/bin/activate
-python3 -m pip install jupyter pandas numpy matplotlib seaborn web3 python-dotenv
-```
-
-If your environment does not use `.venv`, activate the Python or Conda environment used for the project before installing packages.
-
-## Blockchain setup summary
-
-1. Open **Ganache** and start a local Ethereum workspace.
-2. Confirm the RPC server, usually one of the following:
-   - `http://127.0.0.1:7545`
-   - `http://127.0.0.1:8545`
-3. Open **Remix IDE**.
-4. Compile `contracts/IoTDataStorage.sol` using Solidity `0.8.0` or a compatible `0.8.x` compiler.
-5. Deploy the contract using Remix's **External HTTP Provider** connected to Ganache.
-6. Copy the deployed contract address into the Milestone 1 notebook.
-7. Ensure `contracts/abi.json` matches the latest compiled contract.
-
-## Notebook execution order
-
-Run the notebooks in this order:
-
-1. `IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.ipynb`
-2. `IOT Data Simulation/MS1_Smart_Tracking_System_Blockchain_Ledger_Submission_TeamKaizen.ipynb`
-3. `week_6_HomeworkDataRetrievalandProcessing.ipynb`
-4. `week7_LinePlotofIoTSensorReadingsOverTime.ipynb`
-
-Important: Run the blockchain notebook only when Ganache is running and the deployed contract address is correct.
-
-## Running notebooks from terminal
-
-Run one notebook:
-
-```bash
-jupyter nbconvert --to notebook --execute "IOT Data Simulation/MS1_Smart_Tracking_System_Blockchain_Ledger_Submission_TeamKaizen.ipynb" --ExecutePreprocessor.timeout=900
-```
-
-Run Week 6:
-
-```bash
-jupyter nbconvert --to notebook --execute "week_6_HomeworkDataRetrievalandProcessing.ipynb" --ExecutePreprocessor.timeout=600
-```
-
-Run Week 7:
-
-```bash
-jupyter nbconvert --to notebook --execute "week7_LinePlotofIoTSensorReadingsOverTime.ipynb" --ExecutePreprocessor.timeout=600
-```
-
-## Data conventions
-
-- Keep generated simulation files in `IOT Data Simulation/`.
-- Keep final cleaned visualization-ready homework data in `assets/`.
-- Use relative paths so notebooks work after cloning the repository.
-- Preserve the `package_id` sequence format, such as `PKG001`, `PKG002`, and so on.
-- Use `YES` / `NO` for binary logistics fields such as `Perishable` and `RFID Verified`.
-- Keep coordinates as decimal numbers for Tableau map compatibility.
-- Keep temperature fields numeric so Python and Tableau can aggregate them correctly.
-
-## Tableau visualization notes
-
-The Tableau dashboard uses a Tableau-ready logistics dataset to show:
-
-- package monitoring KPIs,
-- Japan route tracking map,
-- package movement and event status,
-- IoT temperature condition by journey stage,
-- temperature condition distribution,
-- delivery and exception monitoring,
-- sensor and RFID reliability analysis.
+[Kaizen Logistics Smart Package Monitoring & Tracking Dashboard](https://public.tableau.com/views/MO-IT148Milestone2SmartTrackingSystemDashboardSubmissionS3101TeamKaizen/MAINDASHBOARD?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 Recommended dashboard flow:
 
@@ -161,6 +36,238 @@ Recommended dashboard flow:
 2. **Executive Overview**
 3. **Sensor Monitoring**
 4. **Exception Monitoring**
+
+## Project layout
+
+```text
+adet/
+├── archive/
+├── assets/
+│   └── cleaned_iot_data.csv
+├── contracts/
+│   ├── IoTDataStorage.sol
+│   └── abi.json
+├── docs/
+│   ├── IMPROVEMENTS.md
+│   └── tableau_storytelling_iot_sensors.md
+├── IOT Data Simulation/
+│   ├── smart_logistics_tracker_japan_kaizenlogistics.ipynb
+│   ├── smart_logistics_tracker_japan_kaizenlogistics.csv
+│   ├── smart_logistics_tracker_japan_kaizenlogistics.json
+│   ├── MS1_Smart_Tracking_System_Blockchain_Ledger_Submission_TeamKaizen.ipynb
+│   ├── kaizenlogistics_blockchain_ledger_retrieved.csv
+│   ├── kaizenlogistics_blockchain_ledger_retrieved.json
+│   └── kaizenlogistics_blockchain_transactions.csv
+├── DEVELOPER_GUIDE.md
+├── README.md
+├── week_6_HomeworkDataRetrievalandProcessing.ipynb
+└── week7_LinePlotofIoTSensorReadingsOverTime.ipynb
+```
+
+Depending on the branch, the Tableau-specific CSV may be stored in the repository root or in the `assets/` folder:
+
+```text
+tableau_kaizen_logistics_tracking_events.csv
+```
+
+This file is used for Tableau only and is separate from the official Week 6 cleaned dataset.
+
+## Main files
+
+| File | Purpose |
+|---|---|
+| `IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.ipynb` | Generates the updated Kaizen Logistics Japan dataset. |
+| `IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.csv` | Source CSV with 100 package records used for blockchain storage. |
+| `IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.json` | JSON copy of the simulated package records. |
+| `contracts/IoTDataStorage.sol` | Solidity smart contract used in Remix and Ganache. |
+| `contracts/abi.json` | ABI exported from Remix for Web3.py integration. |
+| `IOT Data Simulation/MS1_Smart_Tracking_System_Blockchain_Ledger_Submission_TeamKaizen.ipynb` | Stores 100 package records on the blockchain, retrieves them, validates the ledger, and exports blockchain outputs. |
+| `IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.csv` | Retrieved and decoded blockchain ledger records. |
+| `IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.json` | JSON export of retrieved blockchain ledger records. |
+| `IOT Data Simulation/kaizenlogistics_blockchain_transactions.csv` | Transaction hash log for blockchain writes. |
+| `week_6_HomeworkDataRetrievalandProcessing.ipynb` | Cleans and processes the retrieved blockchain records for visualization. |
+| `assets/cleaned_iot_data.csv` | Final Week 6 cleaned dataset used by Week 7. |
+| `week7_LinePlotofIoTSensorReadingsOverTime.ipynb` | Creates IoT sensor line plots using the cleaned Week 6 output. |
+| `tableau_kaizen_logistics_tracking_events.csv` | Tableau-specific event-level dataset for route tracking and dashboard interactivity. |
+| `docs/IMPROVEMENTS.md` | Summary of major project improvements. |
+| `docs/tableau_storytelling_iot_sensors.md` | Tableau dashboard story, layout, color scheme, and talking points. |
+| `DEVELOPER_GUIDE.md` | Technical setup and troubleshooting guide. |
+
+## Data fields
+
+The updated Kaizen Logistics dataset includes package, route, IoT, and RFID tracking fields such as:
+
+```text
+package_id
+tracking_number
+timestamp
+Origin Location
+Origin City
+Origin Prefecture
+Origin Latitude
+Origin Longitude
+Order Date
+Current Location
+Current Latitude
+Current Longitude
+Estimated Delivery Date
+Delivery Exception Reason
+Status
+Perishable
+Temperature
+Temperature Issue
+Delivery Longitude
+Delivery Latitude
+Delivery City
+Delivery Prefecture
+Route Distance KM
+Estimated Transit Hours
+RFID #
+RFID Verified
+RFID Failure %
+RFID Failure Label
+RFID Success %
+RFID Success Label
+```
+
+The Tableau-specific event dataset expands package-level records into multiple tracking events per package, allowing Tableau to draw route paths and show event-level tooltips.
+
+## Getting started
+
+Create or activate a Python environment, then install the main dependencies:
+
+```bash
+python -m pip install jupyter pandas numpy matplotlib seaborn web3 python-dotenv
+```
+
+If using Conda:
+
+```bash
+conda activate <environment-name>
+python -m pip install jupyter pandas numpy matplotlib seaborn web3 python-dotenv
+```
+
+## Ganache, Remix, and Solidity workflow
+
+1. Open Ganache and start a local blockchain workspace.
+2. Confirm the RPC server. Common values are:
+
+```text
+http://127.0.0.1:7545
+http://127.0.0.1:8545
+```
+
+3. Open Remix IDE.
+4. Create or open `IoTDataStorage.sol`.
+5. Use the latest code from `contracts/IoTDataStorage.sol`.
+6. Compile with Solidity `0.8.0` or compatible `0.8.x` version.
+7. Deploy using **External HTTP Provider** connected to Ganache.
+8. Copy the deployed contract address into the Milestone 1 notebook.
+9. Confirm that `contracts/abi.json` matches the deployed contract.
+
+## Blockchain storage format
+
+The smart contract stores one blockchain record per package row using:
+
+```text
+timestamp
+package_id
+data_type
+data_value
+```
+
+For this project:
+
+- `package_id` contains values such as `PKG001`.
+- `data_type` is stored as `PackageRecord`.
+- `data_value` stores the full package row as a JSON string.
+
+This approach preserves the full CSV row while still following the simple smart contract format used in the coursework.
+
+## Running the notebooks
+
+Run notebooks from the repository root when possible so relative paths work correctly.
+
+Suggested order:
+
+1. Generate or verify the source dataset:
+
+```text
+IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.ipynb
+```
+
+2. Run the Milestone 1 blockchain ledger notebook:
+
+```text
+IOT Data Simulation/MS1_Smart_Tracking_System_Blockchain_Ledger_Submission_TeamKaizen.ipynb
+```
+
+3. Run the Week 6 data retrieval and processing notebook:
+
+```text
+week_6_HomeworkDataRetrievalandProcessing.ipynb
+```
+
+4. Run the Week 7 line plot notebook:
+
+```text
+week7_LinePlotofIoTSensorReadingsOverTime.ipynb
+```
+
+## Expected outputs
+
+Milestone 1 blockchain outputs:
+
+```text
+IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.csv
+IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.json
+IOT Data Simulation/kaizenlogistics_blockchain_transactions.csv
+```
+
+Week 6 cleaned output:
+
+```text
+assets/cleaned_iot_data.csv
+```
+
+Tableau visualization dataset:
+
+```text
+tableau_kaizen_logistics_tracking_events.csv
+```
+
+## Tableau dashboard notes
+
+The Tableau dashboard uses the event-level CSV to support:
+
+- Japan route/path mapping
+- event-level tracking points
+- package-level filters
+- event status filters
+- perishable package filters
+- temperature condition charts
+- RFID reliability analysis
+- exception monitoring
+
+Recommended main dashboard title:
+
+```text
+Kaizen Logistics Smart Package Monitoring & Tracking Dashboard
+```
+
+Recommended main map title:
+
+```text
+Japan Smart Shipment Route Map
+```
+
+## Documentation
+
+Additional project documentation:
+
+- [Developer Guide](DEVELOPER_GUIDE.md)
+- [Improvement Log](docs/IMPROVEMENTS.md)
+- [Tableau Storytelling Guide](docs/tableau_storytelling_iot_sensors.md)
 
 ## Contributing
 
@@ -176,22 +283,12 @@ This repository uses a lightweight GitFlow-style model:
 
 ### Contribution flow
 
-1. Create your branch from the correct base branch.
+1. Create a new branch from the correct base branch.
 2. Keep commits focused and descriptive.
 3. Verify changed notebooks before opening a pull request.
-4. Open a pull request into `develop`, unless it is a hotfix.
-5. After approval, squash-merge unless preserving granular history is required.
-
-### Notebook and data updates
-
-- When a notebook is changed, verify it runs successfully.
-- Keep paired CSV/JSON assets synchronized with notebook logic.
-- Do not commit local-only files such as `.env`, temporary notebook checkpoints, or large unrelated exports.
-- Update this README and `DEVELOPER_GUIDE.md` when folder paths, file names, contract logic, or notebook outputs change.
-
-## Improvement Log
-
-See [docs/IMPROVEMENTS.md](docs/IMPROVEMENTS.md) for a compact record of notebook, config, and documentation improvements made so far.
+4. Keep paired CSV/JSON outputs synchronized with notebook logic.
+5. Do not commit local-only files such as `.env`, notebook checkpoints, or temporary exports.
+6. Update documentation when folder paths, notebook names, contract logic, dataset structure, or dashboard links change.
 
 ## Rights
 

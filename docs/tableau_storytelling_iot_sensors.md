@@ -1,117 +1,355 @@
-# Telling an IoT Logistics Story in Tableau
+# Tableau Storytelling Guide: Kaizen Logistics Smart Monitoring & Tracking
 
-This document outlines the visual design, data preparation, storyboard dashboard layout, and talking points for building a premium **Tableau Story** based on the IoT sensor and shipment dataset analyzed in [week7_LinePlotofIoTSensorReadingsOverTime.ipynb](file:///Users/brianjancarlos/codestuff/MMDC/ADET/adet/week7_LinePlotofIoTSensorReadingsOverTime.ipynb).
+This document outlines the visual design, dashboard structure, data preparation approach, and presentation talking points for the **Kaizen Logistics Smart Package Monitoring & Tracking Dashboard** in Tableau.
 
----
+The Tableau dashboard uses a dedicated visualization dataset built from the Kaizen Logistics IoT package records. It is separate from the Week 6 homework output so the dashboard can support route paths, event-level tracking, tooltips, filters, and multi-page storytelling.
 
-## 1. The Core Narrative Arc
+## Tableau Public Dashboard
 
-The story is designed for a **Logistics Operations Director** or **Supply Chain Manager**. It transitions from a macro overview of operations to micro analyses of temperature-critical failures, carrier reliability, and resource efficiency.
+Published dashboard:
+
+[Kaizen Logistics Smart Package Monitoring & Tracking Dashboard](https://public.tableau.com/views/MO-IT148Milestone2SmartTrackingSystemDashboardSubmissionS3101TeamKaizen/MAINDASHBOARD?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
+## 1. Core Narrative Arc
+
+The dashboard story is designed for logistics managers, operations leads, and stakeholders who need to understand package movement, delivery performance, IoT temperature condition, and RFID tracking reliability across Japan.
 
 ```mermaid
 graph TD
-    A["Overview Map Dashboard<br>(Macro Operations Health)"] --> B["Cold Chain Dashboard<br>(Temp & Humidity Control)"]
-    A --> C["Carrier Dashboard<br>(SLA & Delay Diagnostics)"]
-    A --> D["Resource Dashboard<br>(Asset & Stock Levels)"]
-    
-    style A fill:#4C72B0,stroke:#333,stroke-width:2px,color:#fff
-    style B fill:#DD8452,stroke:#333,stroke-width:2px,color:#fff
-    style C fill:#8172B3,stroke:#333,stroke-width:2px,color:#fff
-    style D fill:#55A868,stroke:#333,stroke-width:2px,color:#fff
+    A["Command Center<br>Smart Monitoring & Route Tracking"] --> B["Executive Overview<br>Delivery Performance & Package Mix"]
+    A --> C["Sensor Monitoring<br>Temperature & RFID Trends"]
+    A --> D["Exception Monitoring<br>Risks, Delays & Follow-up Items"]
+
+    style A fill:#B00000,stroke:#7A0000,stroke-width:2px,color:#fff
+    style B fill:#4A4A4A,stroke:#333,stroke-width:2px,color:#fff
+    style C fill:#6C8EA4,stroke:#333,stroke-width:2px,color:#fff
+    style D fill:#C44E52,stroke:#7A0000,stroke-width:2px,color:#fff
 ```
 
----
+The story answers four main questions:
 
-## 2. Tableau Storyboard Breakdown
+1. **Where are packages moving across Japan?**
+2. **How well is Kaizen Logistics performing against delivery and tracking goals?**
+3. **Are package temperatures staying within acceptable conditions?**
+4. **Which packages require operational attention?**
 
-### Dashboard 1: Executive Operations Overview
-* **Objective:** Understand the current geographical footprint and operational status of Japan deliveries.
-* **Visual Structure:**
-  * **Map Visual:** A Map of Japan using `Latitude` & `Longitude` (Detail on `Current Location`). Color mark by `Package Status` (To Ship, In Transit, Delivered, Delayed, Cancelled). 
-  * **KPI Summary Cards (Top Row):**
-    * *Active Shipments* (`COUNTD(Package ID)`)
-    * *Delay Rate* (`SUM(Logistics Delay) / COUNT(Package ID)`)
-    * *Average Wait Time* (`AVG(Waiting Time Minutes)`)
-    * *Tamper Alert Rate* (`% of Yes answers in Tamper Alert`)
-* **Talking Points:**
-  > *“Today we are tracking X shipments across Japan. Our active delay rate is currently at Y%, with hotspots concentrated in Prefecture regions like Kanagawa and Osaka due to sudden traffic and detours. Let's dive deeper into where quality issues are arising.”*
+## 2. Dashboard Pages
 
----
+### Dashboard 1: Kaizen Logistics Smart Package Monitoring & Tracking Dashboard
 
-### Dashboard 2: Cold Chain & Quality Control
-* **Objective:** Identify quality exceptions in transit, specifically looking at perishable goods.
-* **Visual Structure:**
-  * **Dual-Axis Linear Line Chart (aggregated hourly):** 
-    * Columns: `Continuous Timestamp (Hour)`
-    * Rows: `Temperature` (Left axis) and `Humidity` (Right axis)
-    * Color: `Perishable` (Yes/No)
-  * **Reference Bands (Temperature):** Add a reference band on the Temperature axis from **0°C to 8°C** to show the acceptable cold-chain margin.
-  * **Alert Shapes:** Place shape markers (e.g., Red Exclamation points) on the timeline when `Tamper Alert = Yes` or `RFID Verified = False`.
-* **Talking Points:**
-  > *“Our cold chain integrity is crucial. As seen in the hourly temperature timeline, several perishable packages in storage or delayed status experienced excursions exceeding 8°C. These coincide directly with traffic delays, showing a clear dependency between route scheduling and quality maintenance.”*
+**Objective:** Provide a command-center view of package movement, core KPIs, and IoT temperature conditions.
 
----
+**Recommended title:**
 
-### Dashboard 3: Carrier Performance & Delay Root Causes
-* **Objective:** Compare carrier efficiency to renegotiate SLAs and optimize routing options.
-* **Visual Structure:**
-  * **Box-and-Whisker Plot:** 
-    * Columns: `Carrier` (Yamato Transport, Japan Post, Sagawa Express)
-    * Rows: `Waiting Time Minutes`
-    * Detail: `Package ID`
-  * **Stacked Bar Chart:** 
-    * Columns: `Carrier`
-    * Rows: `Number of Records`
-    * Color: `Logistics Delay Reason` (Address Unknown, Traffic, Weather, etc.)
-* **Talking Points:**
-  > *“When analyzing carrier reliability, Sagawa shows a tighter distribution of waiting times, whereas Japan Post has a wider spread with delays mostly driven by 'Address Unknown' issues. We can target specific remediation strategies for each vendor partners.”*
-
----
-
-### Dashboard 4: Resource & Capacity Optimization
-* **Objective:** Synchronize warehouse stock levels with transportation fleet deployment.
-* **Visual Structure:**
-  * **Scatter Plot:**
-    * X-axis: `Inventory Level`
-    * Y-axis: `Asset Utilization (%)`
-    * Detail: `Prefecture`
-    * Size: `Average Waiting Time`
-  * **Reference Lines:** Horizontal line at 80% Asset Utilization (representing standard baseline target).
-* **Talking Points:**
-  > *“To optimize resources, we look at how warehouse inventory corresponds to truck utilization. We see locations in Kanagawa and Hokkaido with low utilization but high inventory levels, indicating a dispatch bottleneck. By realigning scheduling, we can increase asset utilization past our 80% benchmark.”*
-
----
-
-## 3. Data Preparation Steps in Tableau
-
-To replicate the data preparation steps completed in the Jupyter Notebook [week7_LinePlotofIoTSensorReadingsOverTime.ipynb](file:///Users/brianjancarlos/codestuff/MMDC/ADET/adet/week7_LinePlotofIoTSensorReadingsOverTime.ipynb), implement the following calculations in Tableau:
-
-### A. Standardizing Package Status
-The original raw `Latest Status` column is highly detailed. Create a Calculated Field named `Package Status` to group them:
-```sql
-CASE LOWER(TRIM([Latest Status]))
-  WHEN 'delivered to the delivery address' THEN 'Delivered'
-  WHEN 'returned due to absence' THEN 'Cancelled'
-  WHEN 'bring it back due to your absence' THEN 'Delayed'
-  WHEN 'under investigation' THEN 'Delayed'
-  WHEN 'address unknown' THEN 'Delayed'
-  WHEN 'storage' THEN 'To Ship'
-  WHEN 'hold' THEN 'To Ship'
-  ELSE 'In Transit'
-END
+```text
+Kaizen Logistics Smart Package Monitoring & Tracking Dashboard
 ```
 
-### B. Time Aggregation (Hourly Floor)
-To clean up line charts and reduce noise, create a calculated field for hourly granularity:
-```sql
-DATETRUNC('hour', [Timestamp])
+**Subtitle:**
+
+```text
+IoT-enabled and blockchain-backed package monitoring across Japan
 ```
+
+**Main visuals:**
+
+- KPI cards:
+  - Total Packages
+  - Delivery Rate
+  - Average Temperature
+  - Perishable Packages
+- Japan smart shipment route map:
+  - route lines show package movement
+  - event points show tracking stages
+  - tooltips show package, location, temperature, status, and RFID information
+- IoT Temperature Condition by Journey Stage:
+  - stacked vertical bar chart
+  - compares Ambient, Cool, and Danger Zone readings by event status
+- Temperature Condition Distribution:
+  - donut chart showing overall Ambient, Cool, and Danger Zone share
+- Smart Monitoring Summary:
+  - short explanation panel that helps users understand the page
+
+**Main dashboard talking point:**
+
+> “This command center gives a real-time-style view of Kaizen Logistics operations. The route map traces package movement across Japan, while the KPI cards and temperature charts summarize package performance and condition throughout the delivery journey.”
 
 ---
 
-## 4. Marp Presentation Slides
+### Dashboard 2: Executive Overview
 
-Below is the **Marp** markdown formatting to create presentation slides based on this Tableau Story:
+**Objective:** Summarize business-level delivery performance, package volume, package mix, and tracking reliability.
+
+**Suggested visuals:**
+
+- KPI cards:
+  - Total Packages
+  - Delivery Rate
+  - Delivered Packages
+  - In Transit Packages
+  - Exception Packages
+  - Average RFID Success %
+- Package count by final status
+- Package count by order week
+- Perishable vs non-perishable package distribution
+- Average temperature by final status
+- RFID reliability distribution
+- Temperature condition distribution
+
+**Talking point:**
+
+> “The executive overview summarizes overall logistics performance. It shows whether the operation is meeting expected service levels through delivery rate, exception count, perishable handling, temperature condition, and RFID reliability.”
+
+---
+
+### Dashboard 3: Sensor Monitoring
+
+**Objective:** Analyze IoT readings and RFID reliability over time.
+
+**Suggested visuals:**
+
+- Temperature over time by final status
+- Temperature over time by perishable type
+- RFID success over time by final status
+- Temperature issue by event status
+- Optional dual-axis view for temperature and RFID success
+
+**Recommended chart labels:**
+
+- `Temperature (°C)` for temperature axes
+- `RFID Success Rate (%)` for RFID axes
+- Use continuous `event_timestamp` for time-series charts
+
+**Talking point:**
+
+> “The sensor monitoring dashboard focuses on how IoT readings change over time. Temperature trends help identify possible package condition risks, while RFID success trends show whether tracking reliability remains stable throughout the package journey.”
+
+---
+
+### Dashboard 4: Exception Monitoring
+
+**Objective:** Identify shipments that may require follow-up due to delivery exceptions, temperature risk, or RFID reliability concerns.
+
+**Suggested visuals:**
+
+- KPI cards:
+  - Exception Packages
+  - Not Delivered Packages
+  - Danger Zone Packages
+  - RFID At-Risk Packages
+  - Average RFID Failure %
+- Delivery exception reasons
+- At-risk packages by temperature issue
+- Top packages by RFID failure percentage
+- Exception package detail table
+- Optional exception-only map
+
+**Talking point:**
+
+> “The exception monitoring page highlights packages that need operational attention. It helps users identify not-delivered shipments, danger-zone temperature readings, and RFID reliability issues that may require follow-up.”
+
+## 3. Tableau Data Source Strategy
+
+The Tableau dashboard is best built using a single event-level CSV:
+
+```text
+tableau_kaizen_logistics_tracking_events.csv
+```
+
+This dataset is designed for dashboard interactivity and route mapping. It should contain multiple rows per package, where each row represents a tracking event.
+
+Example route sequence:
+
+```text
+Order Placed → Picked Up → In Transit → Out for Delivery → Delivered / In Transit / Not Delivered
+```
+
+Recommended fields:
+
+```text
+package_id
+tracking_number
+event_order
+event_type
+event_status
+event_timestamp
+event_location
+event_city
+event_prefecture
+event_latitude
+event_longitude
+map_path_id
+map_path_order
+origin_location
+origin_city
+origin_prefecture
+origin_latitude
+origin_longitude
+delivery_location
+delivery_city
+delivery_prefecture
+delivery_latitude
+delivery_longitude
+final_status
+perishable
+event_temperature
+event_temperature_issue
+rfid_number
+rfid_verified
+rfid_failure_percent
+rfid_failure_label
+rfid_success_percent
+rfid_success_label
+delivery_exception_reason
+order_week
+```
+
+## 4. Map Design Notes
+
+The route map should use a dual-layer approach:
+
+1. **Route lines**
+   - mark type: Line
+   - detail: `map_path_id`, `package_id`
+   - path: `map_path_order`
+   - color: muted gray or final status
+   - size: thin
+   - opacity: low to medium
+
+2. **Tracking event points**
+   - mark type: Circle
+   - color: `event_status`
+   - tooltip: package, event, location, timestamp, temperature, RFID, final status, and exception reason
+
+Recommended map title:
+
+```text
+Japan Smart Shipment Route Map
+```
+
+Recommended tooltip:
+
+```text
+Package ID: <Package Id>
+Tracking No.: <Tracking Number>
+
+Event: <Event Type>
+Event Status: <Event Status>
+Final Status: <Final Status>
+
+Location: <Event Location>
+City/Prefecture: <Event City>, <Event Prefecture>
+Timestamp: <Event Timestamp>
+
+Temperature: <Event Temperature> °C
+Temperature Issue: <Event Temperature Issue>
+
+RFID Success: <Rfid Success Percent>%
+RFID Reliability: <Rfid Success Label>
+
+Exception Reason: <Delivery Exception Reason>
+```
+
+## 5. Recommended Color Scheme
+
+The dashboard uses a dark red, white, and light gray theme.
+
+### Base theme colors
+
+| Use | Hex |
+|---|---:|
+| Brand dark red | `#B00000` |
+| Dark maroon | `#7A0000` |
+| White panel | `#FFFFFF` |
+| Light gray background | `#E6E6E6` |
+| Medium gray border | `#C9C9C9` |
+| Dark text | `#333333` |
+
+### Temperature condition colors
+
+| Temperature Issue | Hex |
+|---|---:|
+| Ambient | `#BFC0C0` |
+| Cool | `#6C8EA4` |
+| Danger Zone | `#B00000` |
+
+### Event status colors
+
+| Event Status | Hex |
+|---|---:|
+| Order Placed | `#BFC0C0` |
+| Picked Up | `#D9A441` |
+| In Transit | `#A65E00` |
+| Out for Delivery | `#9E3D3F` |
+| Delivered | `#5E6F64` |
+| Not Delivered | `#B00000` |
+
+For the main dashboard map, route lines should be muted so the all-packages view remains readable.
+
+Recommended route line setting:
+
+```text
+Color: #8A8A8A
+Opacity: 35% to 45%
+Size: thin
+```
+
+## 6. Benchmark and Target Suggestions
+
+Use benchmark notes in KPI titles, subtitles, or tooltips.
+
+| Metric | Suggested Target |
+|---|---:|
+| Delivery Rate | `≥ 95%` |
+| Average RFID Success % | `≥ 97%` |
+| Exception Packages | `≤ 5 packages` |
+| Danger Zone Packages | `≤ 5 packages` |
+| Average Temperature | `≤ 25°C` as a general monitoring guide |
+
+Example KPI tooltip:
+
+```text
+Metric: Delivery Rate
+Target: ≥ 95%
+Interpretation: Measures the percentage of unique packages successfully delivered.
+```
+
+## 7. Dashboard Interactivity
+
+Recommended global filters:
+
+```text
+package_id
+final_status
+event_status
+perishable
+event_temperature_issue
+rfid_success_label
+event_timestamp
+order_week
+```
+
+Recommended dashboard actions:
+
+- Select a route or event point on the map to filter related charts.
+- Select a status bar to filter the map and detail tables.
+- Select a temperature condition to focus on Ambient, Cool, or Danger Zone events.
+- Use `package_id` to inspect one package journey from origin to final status.
+
+## 8. Presentation Flow
+
+Suggested presentation order:
+
+1. **Command Center** - show the full operational view and Japan route map.
+2. **Executive Overview** - explain business performance and package mix.
+3. **Sensor Monitoring** - explain temperature and RFID behavior over time.
+4. **Exception Monitoring** - show risk detection and operational follow-up.
+
+Final summary script:
+
+> “The Tableau dashboard connects the blockchain-backed IoT data pipeline to a practical logistics monitoring use case. It allows Kaizen Logistics to monitor package movement across Japan, track package condition through IoT temperature readings, evaluate RFID reliability, and identify shipments requiring operational attention.”
+
+## 9. Marp Presentation Outline
 
 ```markdown
 ---
@@ -119,43 +357,36 @@ marp: true
 theme: gaia
 _class: lead
 paginate: true
-backgroundColor: #1e293b
-color: #f8fafc
+backgroundColor: #7A0000
+color: #ffffff
 
-# IoT Logistics Operations in Japan
-## Cold Chain & Performance Analysis in Tableau
+# Kaizen Logistics Smart Monitoring & Tracking
+## IoT-enabled and blockchain-backed package monitoring across Japan
 ---
 
-# Narrative Goal
-- **Identify Bottlenecks:** Locate operational delays.
-- **Maintain Cold Chain:** Pinpoint temperature exceptions for perishable goods.
-- **Optimize Assets:** Balance inventory levels and fleet utilization.
-
----
-
-# Slide 1: Network Health Overview
-- **Visual:** Map of Japan with active carrier pathways.
-- **KPIs:** Active delay rate, overall waiting times.
-- **Insight:** Hotspots in Kanagawa and Osaka regions require detour optimization.
+# Dashboard 1: Command Center
+- Japan route map shows package movement.
+- KPI cards summarize delivery rate, package volume, average temperature, and perishable package count.
+- Temperature charts show Ambient, Cool, and Danger Zone conditions.
 
 ---
 
-# Slide 2: Keeping Perishables Cold
-- **Visual:** Dual-axis timeline of temperature & humidity.
-- **Thresholds:** Reference bands highlighting when temperature > 8°C.
-- **Action:** Intervene on transit routes where delayed packages risk spoiling.
+# Dashboard 2: Executive Overview
+- Summarizes delivery performance and package distribution.
+- Uses benchmark targets for delivery rate and RFID reliability.
+- Highlights overall logistics performance.
 
 ---
 
-# Slide 3: Carrier Benchmarking
-- **Visual:** Boxplot of waiting times by carrier.
-- **Diagnostics:** Root causes of carrier delays (Traffic vs. Address Unknown).
-- **Action:** Re-negotiate SLAs with carriers under-performing in specific prefectures.
+# Dashboard 3: Sensor Monitoring
+- Shows temperature trends over time.
+- Compares sensor behavior by final status and perishable package type.
+- Tracks RFID success rate as a reliability metric.
 
 ---
 
-# Slide 4: Resource Efficiency
-- **Visual:** Scatter plot of Inventory Levels vs. Asset Utilization.
-- **Target:** Meet the 80% fleet utilization goal.
-- **Opportunity:** Resolve warehouse dispatch bottlenecks where stocks are high but trucks run empty.
+# Dashboard 4: Exception Monitoring
+- Identifies packages requiring follow-up.
+- Shows delivery exceptions, temperature risks, and RFID concerns.
+- Supports operational decision-making.
 ```
