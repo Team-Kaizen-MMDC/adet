@@ -82,15 +82,19 @@ This document summarizes the major improvements made to the **Kaizen Logistics S
 ## Tableau dashboard improvements
 
 - Added a Tableau-specific event-level dataset for interactive route and sensor monitoring:
-  - `tableau_kaizen_logistics_tracking_events.csv`
+  - `assets/tableau_kaizen_logistics_tracking_events.csv`
 - Expanded the Tableau dataset from package-level rows into tracking-event rows.
 - Added route/path helper fields such as `event_order`, `map_path_id`, and `map_path_order`.
 - Added event-level fields for route tracking, tooltips, temperature monitoring, and dashboard filters.
-- Designed the Tableau dashboard story around four dashboard pages:
+- Designed the Tableau dashboard story around three final dashboard pages:
   1. **Kaizen Logistics Smart Package Monitoring & Tracking Dashboard**
-  2. **Executive Overview**
-  3. **Sensor Monitoring**
-  4. **Exception Monitoring**
+  2. **Kaizen Logistics Prefecture Operations & Temperature Insights**
+  3. **Kaizen Logistics IoT Sensor Reliability & Exception Monitoring**
+- Added final dashboard layout refinements using the dark red, white, and light gray design theme.
+- Added command-center, prefecture insights, and sensor reliability narratives.
+- Added Top 10 regional views for readable prefecture comparison.
+- Added customized KPI and chart tooltips with scope notes, filter notes, benchmarks, and interpretation guidance.
+- Added navigation buttons for moving between the three Tableau pages.
 - Added a Tableau Public dashboard link to the README.
 - Updated the Tableau storytelling documentation to match the final Kaizen Logistics dataset and dashboard structure.
 
@@ -115,7 +119,7 @@ IOT Data Simulation/kaizenlogistics_blockchain_transactions.csv
 assets/cleaned_iot_data.csv
 week_6_HomeworkDataRetrievalandProcessing.ipynb
 week7_LinePlotofIoTSensorReadingsOverTime.ipynb
-tableau_kaizen_logistics_tracking_events.csv
+assets/tableau_kaizen_logistics_tracking_events.csv
 contracts/IoTDataStorage.sol
 contracts/abi.json
 README.md

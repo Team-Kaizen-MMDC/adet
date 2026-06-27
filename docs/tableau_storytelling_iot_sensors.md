@@ -12,26 +12,23 @@ Published dashboard:
 
 ## 1. Core Narrative Arc
 
-The dashboard story is designed for logistics managers, operations leads, and stakeholders who need to understand package movement, delivery performance, IoT temperature condition, and RFID tracking reliability across Japan.
+The dashboard story is designed for logistics managers, operations leads, and stakeholders who need to understand package movement, delivery performance, IoT temperature condition, delivered-prefecture coverage, and RFID tracking reliability across Japan.
 
 ```mermaid
 graph TD
-    A["Command Center<br>Smart Monitoring & Route Tracking"] --> B["Executive Overview<br>Delivery Performance & Package Mix"]
-    A --> C["Sensor Monitoring<br>Temperature & RFID Trends"]
-    A --> D["Exception Monitoring<br>Risks, Delays & Follow-up Items"]
+    A["Main Dashboard<br>Smart Monitoring & Route Tracking"] --> B["Prefecture Insights<br>Regional Volume & Temperature"]
+    A --> C["Sensor Reliability<br>RFID, Temperature & Exceptions"]
 
     style A fill:#B00000,stroke:#7A0000,stroke-width:2px,color:#fff
     style B fill:#4A4A4A,stroke:#333,stroke-width:2px,color:#fff
     style C fill:#6C8EA4,stroke:#333,stroke-width:2px,color:#fff
-    style D fill:#C44E52,stroke:#7A0000,stroke-width:2px,color:#fff
 ```
 
-The story answers four main questions:
+The final three-page story answers three main questions:
 
-1. **Where are packages moving across Japan?**
-2. **How well is Kaizen Logistics performing against delivery and tracking goals?**
-3. **Are package temperatures staying within acceptable conditions?**
-4. **Which packages require operational attention?**
+1. **Where are packages moving across Japan and how are shipments performing overall?**
+2. **Which delivered prefectures show higher package activity and temperature concerns?**
+3. **Which packages or sensor signals require operational review?**
 
 ## 2. Dashboard Pages
 
@@ -58,7 +55,7 @@ IoT-enabled and blockchain-backed package monitoring across Japan
   - Delivery Rate
   - Average Temperature
   - Perishable Packages
-- Japan smart shipment route map:
+- Japan Smart Shipment Route Map:
   - route lines show package movement
   - event points show tracking stages
   - tooltips show package, location, temperature, status, and RFID information
@@ -67,93 +64,78 @@ IoT-enabled and blockchain-backed package monitoring across Japan
   - compares Ambient, Cool, and Danger Zone readings by event status
 - Temperature Condition Distribution:
   - donut chart showing overall Ambient, Cool, and Danger Zone share
-- Smart Monitoring Summary:
-  - short explanation panel that helps users understand the page
+- Dashboard Summary and Temperature Monitoring Insight text panels
 
 **Main dashboard talking point:**
 
-> “This command center gives a real-time-style view of Kaizen Logistics operations. The route map traces package movement across Japan, while the KPI cards and temperature charts summarize package performance and condition throughout the delivery journey.”
+> “This command center gives an overall view of package movement, delivery performance, and IoT temperature monitoring across Japan. The route map traces package journeys, while the KPI cards and temperature charts summarize package condition throughout the delivery journey.”
 
 ---
 
-### Dashboard 2: Executive Overview
+### Dashboard 2: Kaizen Logistics Prefecture Operations & Temperature Insights
 
-**Objective:** Summarize business-level delivery performance, package volume, package mix, and tracking reliability.
+**Objective:** Compare delivered-prefecture coverage, package volume, average temperature, and Danger Zone readings across regional delivery areas.
 
-**Suggested visuals:**
+**Main visuals:**
 
 - KPI cards:
-  - Total Packages
-  - Delivery Rate
-  - Delivered Packages
-  - In Transit Packages
-  - Exception Packages
-  - Average RFID Success %
-- Package count by final status
-- Package count by order week
-- Perishable vs non-perishable package distribution
-- Average temperature by final status
-- RFID reliability distribution
-- Temperature condition distribution
-
-**Talking point:**
-
-> “The executive overview summarizes overall logistics performance. It shows whether the operation is meeting expected service levels through delivery rate, exception count, perishable handling, temperature condition, and RFID reliability.”
-
----
-
-### Dashboard 3: Sensor Monitoring
-
-**Objective:** Analyze IoT readings and RFID reliability over time.
-
-**Suggested visuals:**
-
-- Temperature over time by final status
-- Temperature over time by perishable type
-- RFID success over time by final status
-- Temperature issue by event status
-- Optional dual-axis view for temperature and RFID success
-
-**Recommended chart labels:**
-
-- `Temperature (°C)` for temperature axes
-- `RFID Success Rate (%)` for RFID axes
-- Use continuous `event_timestamp` for time-series charts
-
-**Talking point:**
-
-> “The sensor monitoring dashboard focuses on how IoT readings change over time. Temperature trends help identify possible package condition risks, while RFID success trends show whether tracking reliability remains stable throughout the package journey.”
-
----
-
-### Dashboard 4: Exception Monitoring
-
-**Objective:** Identify shipments that may require follow-up due to delivery exceptions, temperature risk, or RFID reliability concerns.
-
-**Suggested visuals:**
-
-- KPI cards:
-  - Exception Packages
-  - Not Delivered Packages
+  - Delivered Prefectures
+  - Avg. Prefecture Temp
   - Danger Zone Packages
-  - RFID At-Risk Packages
-  - Average RFID Failure %
-- Delivery exception reasons
-- At-risk packages by temperature issue
-- Top packages by RFID failure percentage
-- Exception package detail table
-- Optional exception-only map
+- Top 10 Package Volume by Prefecture and Temperature Condition
+- Top 10 Average Temperature by Prefecture
+- Top 10 Package Density by Prefecture
+- Sidebar insight and filters:
+  - Event Temperature Issue
+  - Final Delivery Status
+
+**Design notes:**
+
+- “Delivered Prefectures” refers to the number of Japanese prefectures where Kaizen Logistics recorded package deliveries in the dataset.
+- Top 10 views are used to reduce visual clutter and focus on the most active delivery prefectures.
+- Tooltips disclose that values are affected by selected filters and should be interpreted within the current dashboard selection.
 
 **Talking point:**
 
-> “The exception monitoring page highlights packages that need operational attention. It helps users identify not-delivered shipments, danger-zone temperature readings, and RFID reliability issues that may require follow-up.”
+> “The Prefecture Insights page highlights where Kaizen Logistics has delivery coverage and which active prefectures show higher package volume or temperature concerns. Top 10 views keep the regional comparison readable while filters allow users to focus on temperature condition and final delivery status.”
+
+---
+
+### Dashboard 3: Kaizen Logistics IoT Sensor Reliability & Exception Monitoring
+
+**Objective:** Evaluate RFID reliability, delivery exceptions, temperature movement, and packages requiring operational review.
+
+**Main visuals:**
+
+- KPI cards:
+  - In Transit
+  - Not Delivered
+  - Avg. RFID Success %
+  - RFID At-Risk Packages
+- RFID Success Rate Over Time
+- Temperature Trend by Journey Stage & Delivery Status
+- Packages Requiring Operational Review
+- RFID Reliability Distribution
+- Sensor reliability summary and insight text panels
+
+**Benchmark and risk notes:**
+
+- RFID success is interpreted against a 97% target.
+- RFID At-Risk Packages counts unique packages classified as At Risk based on RFID reliability.
+- Packages Requiring Operational Review ranks packages using combined package-level risk signals such as unresolved delivery status, Danger Zone temperature reading, and RFID At-Risk label.
+
+**Talking point:**
+
+> “The Sensor Reliability page closes the dashboard story by identifying packages and time periods that may require review. It combines RFID success, delivery status, temperature movement, and package-level risk scoring to support operational follow-up.”
+
+---
 
 ## 3. Tableau Data Source Strategy
 
 The Tableau dashboard is best built using a single event-level CSV:
 
 ```text
-tableau_kaizen_logistics_tracking_events.csv
+assets/tableau_kaizen_logistics_tracking_events.csv
 ```
 
 This dataset is designed for dashboard interactivity and route mapping. It should contain multiple rows per package, where each row represents a tracking event.
@@ -314,7 +296,35 @@ Target: ≥ 95%
 Interpretation: Measures the percentage of unique packages successfully delivered.
 ```
 
-## 7. Dashboard Interactivity
+## 7. Tooltip and Explanation Strategy
+
+The final dashboard uses customized tooltips to help viewers understand dynamic KPI values and filtered chart results.
+
+Tooltip principles:
+
+- Use dynamic field inserts from Tableau instead of hardcoded values when filters can change results.
+- Explain whether a KPI counts unique packages, event records, or prefectures.
+- Add benchmark notes where relevant, such as Delivery Rate `≥ 95%` and RFID Success `≥ 97%`.
+- Add scope notes for Top 10 regional charts so viewers know the values are based on the current dashboard selection.
+- Add filter notes when KPIs and charts are affected by selected filters.
+- Use navigation button tooltips to clarify the purpose of each dashboard page.
+
+Examples:
+
+```text
+Delivery Rate: <Delivery Rate>
+
+This measures the percentage of packages that reached Delivered final status based on the current dashboard selection.
+
+Target:
+Delivery Rate should remain at 95% or higher.
+```
+
+```text
+Top 10 views are used to improve dashboard readability and highlight the most active delivery prefectures. Values may change based on selected filters and should be interpreted within the current dashboard view.
+```
+
+## 8. Dashboard Interactivity
 
 Recommended global filters:
 
@@ -336,20 +346,19 @@ Recommended dashboard actions:
 - Select a temperature condition to focus on Ambient, Cool, or Danger Zone events.
 - Use `package_id` to inspect one package journey from origin to final status.
 
-## 8. Presentation Flow
+## 9. Presentation Flow
 
 Suggested presentation order:
 
-1. **Command Center** - show the full operational view and Japan route map.
-2. **Executive Overview** - explain business performance and package mix.
-3. **Sensor Monitoring** - explain temperature and RFID behavior over time.
-4. **Exception Monitoring** - show risk detection and operational follow-up.
+1. **Main Dashboard** - show the full operational view, package KPIs, and Japan route map.
+2. **Prefecture Insights** - explain delivered-prefecture coverage, Top 10 regional volume, average temperature, package density, and Danger Zone monitoring.
+3. **Sensor Reliability** - explain RFID performance, delivery exceptions, journey-stage temperature trends, and packages requiring operational review.
 
 Final summary script:
 
-> “The Tableau dashboard connects the blockchain-backed IoT data pipeline to a practical logistics monitoring use case. It allows Kaizen Logistics to monitor package movement across Japan, track package condition through IoT temperature readings, evaluate RFID reliability, and identify shipments requiring operational attention.”
+> “The Tableau dashboard connects the blockchain-backed IoT data pipeline to a practical logistics monitoring use case. It allows Kaizen Logistics to monitor package movement across Japan, compare delivery prefectures by package volume and temperature condition, evaluate RFID reliability, and identify packages requiring operational attention.”
 
-## 9. Marp Presentation Outline
+## 10. Marp Presentation Outline
 
 ```markdown
 ---
@@ -364,29 +373,27 @@ color: #ffffff
 ## IoT-enabled and blockchain-backed package monitoring across Japan
 ---
 
-# Dashboard 1: Command Center
+# Dashboard 1: Main Dashboard
 - Japan route map shows package movement.
 - KPI cards summarize delivery rate, package volume, average temperature, and perishable package count.
-- Temperature charts show Ambient, Cool, and Danger Zone conditions.
+- Temperature charts show Ambient, Cool, and Danger Zone conditions across the journey.
 
 ---
 
-# Dashboard 2: Executive Overview
-- Summarizes delivery performance and package distribution.
-- Uses benchmark targets for delivery rate and RFID reliability.
-- Highlights overall logistics performance.
+# Dashboard 2: Prefecture Insights
+- Shows delivered-prefecture coverage across Japan.
+- Compares Top 10 package volume, average temperature, and package density by prefecture.
+- Uses temperature and delivery status filters for focused regional analysis.
 
 ---
 
-# Dashboard 3: Sensor Monitoring
-- Shows temperature trends over time.
-- Compares sensor behavior by final status and perishable package type.
-- Tracks RFID success rate as a reliability metric.
+# Dashboard 3: Sensor Reliability
+- Tracks RFID success rate against the 97% target.
+- Compares temperature movement by journey stage and delivery status.
+- Identifies packages requiring operational review using combined risk signals.
 
 ---
 
-# Dashboard 4: Exception Monitoring
-- Identifies packages requiring follow-up.
-- Shows delivery exceptions, temperature risks, and RFID concerns.
-- Supports operational decision-making.
+# Closing
+- The dashboard supports route tracking, regional temperature monitoring, RFID reliability analysis, and operational exception review.
 ```

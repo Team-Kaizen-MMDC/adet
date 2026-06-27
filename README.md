@@ -33,9 +33,8 @@ The Tableau dashboard is published here:
 Recommended dashboard flow:
 
 1. **Kaizen Logistics Smart Package Monitoring & Tracking Dashboard**
-2. **Executive Overview**
-3. **Sensor Monitoring**
-4. **Exception Monitoring**
+2. **Kaizen Logistics Prefecture Operations & Temperature Insights**
+3. **Kaizen Logistics IoT Sensor Reliability & Exception Monitoring**
 
 ## Project layout
 
@@ -43,7 +42,8 @@ Recommended dashboard flow:
 adet/
 ├── archive/
 ├── assets/
-│   └── cleaned_iot_data.csv
+│   ├── cleaned_iot_data.csv
+│   └── tableau_kaizen_logistics_tracking_events.csv
 ├── contracts/
 │   ├── IoTDataStorage.sol
 │   └── abi.json
@@ -64,13 +64,7 @@ adet/
 └── week7_LinePlotofIoTSensorReadingsOverTime.ipynb
 ```
 
-Depending on the branch, the Tableau-specific CSV may be stored in the repository root or in the `assets/` folder:
-
-```text
-tableau_kaizen_logistics_tracking_events.csv
-```
-
-This file is used for Tableau only and is separate from the official Week 6 cleaned dataset.
+The Tableau-specific CSV is stored in the `assets/` folder and is separate from the official Week 6 cleaned dataset.
 
 ## Main files
 
@@ -88,7 +82,7 @@ This file is used for Tableau only and is separate from the official Week 6 clea
 | `week_6_HomeworkDataRetrievalandProcessing.ipynb` | Cleans and processes the retrieved blockchain records for visualization. |
 | `assets/cleaned_iot_data.csv` | Final Week 6 cleaned dataset used by Week 7. |
 | `week7_LinePlotofIoTSensorReadingsOverTime.ipynb` | Creates IoT sensor line plots using the cleaned Week 6 output. |
-| `tableau_kaizen_logistics_tracking_events.csv` | Tableau-specific event-level dataset for route tracking and dashboard interactivity. |
+| `assets/tableau_kaizen_logistics_tracking_events.csv` | Tableau-specific event-level dataset for route tracking, filters, KPI calculations, tooltips, and the final three-page Tableau dashboard. |
 | `docs/IMPROVEMENTS.md` | Summary of major project improvements. |
 | `docs/tableau_storytelling_iot_sensors.md` | Tableau dashboard story, layout, color scheme, and talking points. |
 | `DEVELOPER_GUIDE.md` | Technical setup and troubleshooting guide. |
@@ -233,7 +227,7 @@ assets/cleaned_iot_data.csv
 Tableau visualization dataset:
 
 ```text
-tableau_kaizen_logistics_tracking_events.csv
+assets/tableau_kaizen_logistics_tracking_events.csv
 ```
 
 ## Tableau dashboard notes
@@ -243,11 +237,13 @@ The Tableau dashboard uses the event-level CSV to support:
 - Japan route/path mapping
 - event-level tracking points
 - package-level filters
-- event status filters
+- event status and final delivery status filters
 - perishable package filters
 - temperature condition charts
+- prefecture-level comparison
 - RFID reliability analysis
-- exception monitoring
+- package-level operational risk monitoring
+- customized tooltips, KPI explanations, and navigation buttons
 
 Recommended main dashboard title:
 
@@ -260,6 +256,16 @@ Recommended main map title:
 ```text
 Japan Smart Shipment Route Map
 ```
+
+## Tableau dashboard pages
+
+The final Tableau story is organized into three dashboard pages:
+
+1. **Kaizen Logistics Smart Package Monitoring & Tracking Dashboard** - command-center view with route mapping, core KPIs, journey-stage temperature conditions, and overall temperature distribution.
+2. **Kaizen Logistics Prefecture Operations & Temperature Insights** - regional view showing delivered prefectures, average prefecture temperature, danger-zone package count, Top 10 package volume by prefecture, Top 10 average temperature by prefecture, and Top 10 package density by prefecture.
+3. **Kaizen Logistics IoT Sensor Reliability & Exception Monitoring** - sensor-risk view showing in-transit and not-delivered packages, average RFID success, RFID at-risk packages, RFID trend over time, temperature trend by journey stage and delivery status, operational review packages, and RFID reliability distribution.
+
+Top 10 views are used in the Prefecture Insights page to keep regional comparison readable and focused on the most active delivery prefectures. Tooltip notes disclose that values may change based on selected filters and should be interpreted within the current dashboard selection.
 
 ## Documentation
 

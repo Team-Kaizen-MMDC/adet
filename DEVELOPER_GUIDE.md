@@ -21,7 +21,7 @@ flowchart TD
     I --> J[Run Week 6 Data Retrieval and Processing]
     J --> K[Export assets/cleaned_iot_data.csv]
     K --> L[Run Week 7 Line Plot Notebook]
-    K --> M[Prepare Tableau Event-Level CSV]
+    K --> M[Prepare assets/tableau_kaizen_logistics_tracking_events.csv]
     M --> N[Build Tableau Dashboard]
 ```
 
@@ -41,7 +41,7 @@ flowchart TD
 | `week_6_HomeworkDataRetrievalandProcessing.ipynb` | Cleans and processes retrieved ledger records for visualization readiness. |
 | `assets/cleaned_iot_data.csv` | Final cleaned Week 6 output used by Week 7. |
 | `week7_LinePlotofIoTSensorReadingsOverTime.ipynb` | Produces line plots for IoT sensor readings over time. |
-| `tableau_kaizen_logistics_tracking_events.csv` | Tableau-specific event-level data for route tracking and dashboard interactivity. |
+| `assets/tableau_kaizen_logistics_tracking_events.csv` | Tableau-specific event-level data for route tracking, dashboard filters, KPI calculations, tooltips, and the final three-page Tableau story. |
 | `docs/IMPROVEMENTS.md` | Improvement log for the current project state. |
 | `docs/tableau_storytelling_iot_sensors.md` | Tableau dashboard storyboard, layout, color scheme, and talking points. |
 
@@ -81,7 +81,7 @@ IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.csv
 IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.json
 IOT Data Simulation/kaizenlogistics_blockchain_transactions.csv
 assets/cleaned_iot_data.csv
-tableau_kaizen_logistics_tracking_events.csv
+assets/tableau_kaizen_logistics_tracking_events.csv
 ```
 
 Avoid hardcoding local machine paths such as:
@@ -262,7 +262,7 @@ The Tableau dashboard is published here:
 Use the Tableau-specific event-level CSV for dashboard construction:
 
 ```text
-tableau_kaizen_logistics_tracking_events.csv
+assets/tableau_kaizen_logistics_tracking_events.csv
 ```
 
 This CSV supports:
@@ -270,18 +270,19 @@ This CSV supports:
 - one row per tracking event,
 - route path ordering,
 - event status coloring,
-- map tooltips,
+- map and chart tooltips,
 - dashboard filters,
 - KPI calculations,
-- sensor monitoring charts,
-- exception monitoring charts.
+- prefecture-level comparisons,
+- RFID reliability monitoring,
+- package-level operational review charts,
+- final three-page Tableau storytelling.
 
-Recommended Tableau dashboard pages:
+Final Tableau dashboard pages:
 
-1. **Kaizen Logistics Smart Package Monitoring & Tracking Dashboard**
-2. **Executive Overview**
-3. **Sensor Monitoring**
-4. **Exception Monitoring**
+1. **Kaizen Logistics Smart Package Monitoring & Tracking Dashboard** - overview of package movement, delivery performance, route tracking, and IoT temperature conditions.
+2. **Kaizen Logistics Prefecture Operations & Temperature Insights** - delivered-prefecture coverage, Top 10 package volume, Top 10 average temperature, Top 10 package density, and danger-zone package monitoring.
+3. **Kaizen Logistics IoT Sensor Reliability & Exception Monitoring** - RFID success, RFID at-risk packages, in-transit and not-delivered packages, temperature trends by journey stage, and packages requiring operational review.
 
 Recommended main dashboard story:
 
@@ -289,7 +290,21 @@ Recommended main dashboard story:
 - Japan route map shows package movement across Japan.
 - Temperature condition by journey stage shows where temperature risks appear during the logistics flow.
 - Temperature condition distribution summarizes Ambient, Cool, and Danger Zone shares.
-- Filters allow users to inspect package ID, perishable status, final status, event status, and event timestamp.
+- Filters allow users to inspect package ID, perishable status, final delivery status, event status, and event timestamp.
+
+Recommended Prefecture Insights story:
+
+- Delivered Prefectures counts the Japanese prefectures where Kaizen Logistics recorded deliveries in the dataset.
+- Top 10 views are used for readability and focused comparison across the most active delivery prefectures.
+- Tooltips disclose that charts are affected by filters and Top 10 regional selections.
+- Danger Zone Packages is a unique-package count for packages with at least one Danger Zone temperature reading in the current dashboard context.
+
+Recommended Sensor Reliability story:
+
+- KPI cards track In Transit, Not Delivered, Average RFID Success %, and RFID At-Risk Packages.
+- RFID Success Rate Over Time uses a 97% benchmark to distinguish On Target and Below Target time points.
+- Temperature Trend by Journey Stage & Delivery Status compares temperature behavior from order placement to final status.
+- Packages Requiring Operational Review ranks packages by combined risk signals such as delivery exception, Danger Zone reading, and RFID At-Risk label.
 
 ## Tableau map setup notes
 
