@@ -1,141 +1,415 @@
 # Developer Guide
 
-This guide is for junior engineers who need to run, adjust, or troubleshoot the blockchain notebook in this repo.
+This guide is for team members who need to run, adjust, or troubleshoot the **Kaizen Logistics Smart Package Monitoring & Tracking** workflow.
 
-## What this project does
+## Project purpose
 
-The main notebook, [MS1_Smart_Tracking_System_Blockchain_Ledger_Submission_TeamKaizen.ipynb](MS1_Smart_Tracking_System_Blockchain_Ledger_Submission_TeamKaizen.ipynb), loads IoT logistics data from CSV, connects to a local Ganache chain, and writes selected records to a smart contract.
+The project simulates package-level logistics data for **Kaizen Logistics**, stores 100 IoT package records on a local blockchain through Ganache and Remix, retrieves the blockchain records into Python, validates the retrieved ledger against the original CSV, cleans the data for analysis, and prepares the outputs for Week 7 line plots and Tableau dashboard visualization.
 
-The notebook currently does four important things:
-
-1. Loads the CSV and shows the first 5 rows.
-2. Connects to Ganache.
-3. Loads the deployed contract using the ABI in [contracts/abi.json](contracts/abi.json).
-4. Writes data to the chain while avoiding duplicate exact records and respecting the contract’s record limit.
+## Current workflow overview
 
 ```mermaid
 flowchart TD
-	A[Load CSV] --> B[Connect to Ganache]
-	B --> C[Load ABI and Contract]
-	C --> D[Check Config from .env]
-	D --> E[Check Current Chain Capacity]
-	E --> F[Skip Exact Duplicates]
-	F --> G[Write Location and Status Records]
-	G --> H[Show Totals and First Record]
+    A[Generate Kaizen Logistics CSV and JSON] --> B[Compile IoTDataStorage.sol in Remix]
+    B --> C[Deploy Contract to Ganache]
+    C --> D[Run Milestone 1 Blockchain Ledger Notebook]
+    D --> E[Store 100 PackageRecord Entries]
+    E --> F[Retrieve All Blockchain Records]
+    F --> G[Decode JSON Package Records]
+    G --> H[Validate CSV-to-Ledger Match]
+    H --> I[Export Retrieved Ledger CSV and JSON]
+    I --> J[Run Week 6 Data Retrieval and Processing]
+    J --> K[Export assets/cleaned_iot_data.csv]
+    K --> L[Run Week 7 Line Plot Notebook]
+    K --> M[Prepare assets/tableau_kaizen_logistics_tracking_events.csv]
+    M --> N[Build Tableau Dashboard]
 ```
 
-## Setup
+## Main files and responsibilities
 
-Use the project virtual environment and install the notebook dependencies:
+| File | Purpose |
+|---|---|
+| `IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.ipynb` | Generates the mock Japan logistics dataset for Kaizen Logistics. |
+| `IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.csv` | Source CSV used for blockchain storage. |
+| `IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.json` | JSON copy of the source logistics records. |
+| `contracts/IoTDataStorage.sol` | Solidity smart contract for storing IoT package records. |
+| `contracts/abi.json` | ABI exported from Remix after compiling the latest contract. |
+| `IOT Data Simulation/MS1_Smart_Tracking_System_Blockchain_Ledger_Submission_TeamKaizen.ipynb` | Connects Python to Ganache, stores all 100 source records, retrieves the ledger, validates records, and exports blockchain output files. |
+| `IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.csv` | Retrieved and decoded blockchain ledger records in CSV format. |
+| `IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.json` | Retrieved and decoded blockchain ledger records in JSON format. |
+| `IOT Data Simulation/kaizenlogistics_blockchain_transactions.csv` | Transaction hash log for the blockchain write process. |
+| `week_6_HomeworkDataRetrievalandProcessing.ipynb` | Cleans and processes retrieved ledger records for visualization readiness. |
+| `assets/cleaned_iot_data.csv` | Final cleaned Week 6 output used by Week 7. |
+| `week7_LinePlotofIoTSensorReadingsOverTime.ipynb` | Produces line plots for IoT sensor readings over time. |
+| `assets/tableau_kaizen_logistics_tracking_events.csv` | Tableau-specific event-level data for route tracking, dashboard filters, KPI calculations, tooltips, and the final three-page Tableau story. |
+| `docs/IMPROVEMENTS.md` | Improvement log for the current project state. |
+| `docs/tableau_storytelling_iot_sensors.md` | Tableau dashboard storyboard, layout, color scheme, and talking points. |
+
+## Environment setup
+
+Use a virtual environment or Conda environment, then install the required packages:
 
 ```bash
-source .venv/bin/activate
-python3 -m pip install jupyter pandas numpy matplotlib
+python -m pip install jupyter pandas numpy matplotlib seaborn web3 python-dotenv
 ```
 
-Before running the notebook, copy [/.env.example](.env.example) to [/.env](.env) and update the values for your local Ganache chain and contract.
-
-If you need to freeze dependencies after a change, run:
+If using Conda:
 
 ```bash
-source .venv/bin/activate && pip freeze > requirements.txt
+conda activate <environment-name>
+python -m pip install jupyter pandas numpy matplotlib seaborn web3 python-dotenv
 ```
 
-## Environment Variables
+If dependencies change and the team is maintaining a `requirements.txt`, update it with:
 
-The notebook reads configuration from `.env` if the values are not already exported in your shell.
-
-Example values:
-
-```dotenv
-GANACHE_URL=http://127.0.0.1:8545
-CONTRACT_ADDRESS=0x...
-CONTRACT_OWNER=0x...
-TARGET_CONTRACT_RECORDS=100
-CSV_PATH=IOT Data Simulation/smart_logistic_tracker_japan.csv
-ABI_PATH=contracts/abi.json
-SAMPLE_ROWS=5
-WRITE_DELAY_SECONDS=0.1
-WRITE_GAS_LIMIT=3000000
-ENABLE_DUPLICATE_WRITES=false
+```bash
+python -m pip freeze > requirements.txt
 ```
 
-### Variable meanings
+## Path conventions
 
-- `GANACHE_URL`: Ganache RPC URL. The default local value is `http://127.0.0.1:8545`.
-- `CONTRACT_ADDRESS`: The deployed smart contract address for the notebook session.
-- `CONTRACT_OWNER`: Optional override for the sending account. Use this if the on-chain owner is not unlocked in Ganache.
-- `TARGET_CONTRACT_RECORDS`: The number of on-chain records the notebook should try to write in a run.
-- `CSV_PATH`: Path to the CSV file that the notebook loads.
-- `ABI_PATH`: Path to the ABI file for the deployed contract.
-- `SAMPLE_ROWS`: Number of rows shown in the preview cell.
-- `WRITE_DELAY_SECONDS`: Delay between each transaction.
-- `WRITE_GAS_LIMIT`: Gas limit used for each transaction.
-- `ENABLE_DUPLICATE_WRITES`: Set to `true` when you want to force exact duplicates to be written.
+Use relative paths from the repository root when possible.
 
-### Important detail
+Recommended paths:
 
-The notebook writes **two contract records per CSV row**:
-
-- one `Location` record
-- one `Status` record
-
-That means `TARGET_CONTRACT_RECORDS=100` tries to write about 50 CSV rows.
-
-## Notebook Flow
-
-Run the cells in this order:
-
-1. Load the CSV.
-2. Connect to Ganache.
-3. Load the ABI and contract.
-4. Store the data.
-5. Check totals.
-6. View the first stored record.
-
-### Cell 1: CSV load
-
-This cell reads the CSV path from `.env`, prints the total row count, and shows the first `SAMPLE_ROWS` records.
-
-It also has basic error handling for:
-
-- missing file
-- empty file
-- parser errors
-- unexpected exceptions
-
-If the CSV fails to load, `df` becomes an empty DataFrame so later cells do not crash immediately.
-
-### Cell 3: Contract setup
-
-This cell reads the contract address from `.env`, loads the ABI from `ABI_PATH`, creates the contract instance, and sets the sender account.
-
-If the on-chain owner is not unlocked in Ganache, you must set `CONTRACT_OWNER` to an unlocked account.
-
-### Cell 4: Write data
-
-This cell does the actual storage work.
-
-It now:
-
-- checks whether an exact record already exists before writing
-- respects the contract’s `MAX_ENTRIES`
-- respects `TARGET_CONTRACT_RECORDS`
-- stops early if the contract is full
-
-Because each CSV row produces two records, the row count is calculated carefully so the notebook does not overrun the contract.
-
-The write loop also uses `WRITE_DELAY_SECONDS` and `WRITE_GAS_LIMIT` from `.env`.
-
-## Common Problems
-
-### `CSV file not found`
-
-Check that you are running the notebook from the repository root and that the file path in Cell 1 is correct:
-
-```python
-IOT Data Simulation/smart_logistic_tracker_japan.csv
+```text
+contracts/IoTDataStorage.sol
+contracts/abi.json
+IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.csv
+IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.json
+IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.csv
+IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.json
+IOT Data Simulation/kaizenlogistics_blockchain_transactions.csv
+assets/cleaned_iot_data.csv
+assets/tableau_kaizen_logistics_tracking_events.csv
 ```
+
+Avoid hardcoding local machine paths such as:
+
+```text
+/Users/<username>/...
+```
+
+Local absolute paths can break when another teammate clones the repository.
+
+## Ganache and Remix setup
+
+1. Open Ganache.
+2. Start a local workspace or Quickstart Ethereum chain.
+3. Confirm the RPC server shown in Ganache. It is commonly one of these:
+
+```text
+http://127.0.0.1:7545
+http://127.0.0.1:8545
+```
+
+4. Open Remix IDE.
+5. Open or create `IoTDataStorage.sol`.
+6. Paste the latest contents from `contracts/IoTDataStorage.sol`.
+7. Compile using Solidity `0.8.0` or a compatible `0.8.x` compiler.
+8. Under **Deploy & Run Transactions**, select **External HTTP Provider**.
+9. Enter the Ganache RPC URL.
+10. Deploy the contract.
+11. Copy the deployed contract address into the Milestone 1 notebook.
+12. Export or copy the latest ABI into `contracts/abi.json`.
+
+## Smart contract storage format
+
+The current blockchain approach stores **one smart contract record per package row**.
+
+Each blockchain record uses the contract fields:
+
+```text
+timestamp
+package_id
+data_type
+data_value
+```
+
+For the Kaizen Logistics dataset:
+
+- `package_id` contains the package identifier, such as `PKG001`.
+- `data_type` is stored as `PackageRecord`.
+- `data_value` stores the full package row as a JSON string.
+
+This lets the project preserve the full CSV row while still using a simple contract structure suitable for the coursework template.
+
+## Milestone 1 notebook flow
+
+Notebook:
+
+```text
+IOT Data Simulation/MS1_Smart_Tracking_System_Blockchain_Ledger_Submission_TeamKaizen.ipynb
+```
+
+Recommended run order:
+
+1. Import libraries.
+2. Load the source CSV.
+3. Inspect the dataset structure.
+4. Connect Python to Ganache.
+5. Load the smart contract ABI and contract address.
+6. Confirm the sender account.
+7. Store all 100 CSV package rows as blockchain records.
+8. Save transaction hashes.
+9. Retrieve the total number of stored records.
+10. Retrieve all blockchain ledger records.
+11. Decode JSON package records.
+12. Validate the decoded ledger records against the source CSV.
+13. Preview a worksheet-friendly retrieved record.
+14. Save retrieved blockchain outputs as CSV and JSON.
+
+Expected source input:
+
+```text
+IOT Data Simulation/smart_logistics_tracker_japan_kaizenlogistics.csv
+```
+
+Expected outputs:
+
+```text
+IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.csv
+IOT Data Simulation/kaizenlogistics_blockchain_ledger_retrieved.json
+IOT Data Simulation/kaizenlogistics_blockchain_transactions.csv
+```
+
+## Important Milestone 1 validation notes
+
+The decoded ledger output should preserve the original CSV column order when exported.
+
+The validation step should confirm:
+
+```text
+CSV-to-ledger record match: True
+All 100 CSV records match the retrieved blockchain ledger records.
+```
+
+If the validation fails, check:
+
+1. Whether the source CSV was changed after blockchain storage.
+2. Whether the decoded ledger column order matches the source CSV.
+3. Whether blank values and `nan` values were handled consistently.
+4. Whether the contract address points to the correct deployed contract.
+
+## Week 6 notebook flow
+
+Notebook:
+
+```text
+week_6_HomeworkDataRetrievalandProcessing.ipynb
+```
+
+Purpose:
+
+- load or retrieve the Milestone 1 blockchain ledger output,
+- decode and structure package records,
+- remove blockchain-only helper columns that are not needed for visualization,
+- standardize numeric formatting where appropriate,
+- preserve latitude and longitude precision,
+- prepare the dataset for Week 7 and visualization tasks,
+- export the cleaned CSV to the `assets/` folder.
+
+Expected output:
+
+```text
+assets/cleaned_iot_data.csv
+```
+
+Important cleaning notes:
+
+- Keep timestamp and date fields in readable datetime format.
+- Keep temperature and percent fields numeric.
+- Format non-coordinate decimal fields consistently to 2 decimal places when exported.
+- Preserve latitude and longitude precision for Tableau map plotting.
+- Keep missing exception reasons consistent with the dataset logic.
+- Do not overwrite the official Week 6 output only for Tableau experimentation. Use a separate Tableau CSV for dashboard-specific needs.
+
+## Week 7 notebook flow
+
+Notebook:
+
+```text
+week7_LinePlotofIoTSensorReadingsOverTime.ipynb
+```
+
+Purpose:
+
+- load `assets/cleaned_iot_data.csv`,
+- convert timestamp fields to datetime,
+- create clean line plot visualizations for IoT sensor readings over time,
+- support the dashboard story by showing package temperature and sensor trends.
+
+Expected input:
+
+```text
+assets/cleaned_iot_data.csv
+```
+
+Recommended Week 7 chart focus:
+
+- temperature over time,
+- temperature by package status,
+- temperature by perishable classification,
+- clean date/time labels,
+- readable titles and axis labels.
+
+## Tableau dashboard workflow
+
+The Tableau dashboard is published here:
+
+[Kaizen Logistics Smart Package Monitoring & Tracking Dashboard](https://public.tableau.com/views/MO-IT148Milestone2SmartTrackingSystemDashboardSubmissionS3101TeamKaizen/MAINDASHBOARD?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
+Use the Tableau-specific event-level CSV for dashboard construction:
+
+```text
+assets/tableau_kaizen_logistics_tracking_events.csv
+```
+
+This CSV supports:
+
+- one row per tracking event,
+- route path ordering,
+- event status coloring,
+- map and chart tooltips,
+- dashboard filters,
+- KPI calculations,
+- prefecture-level comparisons,
+- RFID reliability monitoring,
+- package-level operational review charts,
+- final three-page Tableau storytelling.
+
+Final Tableau dashboard pages:
+
+1. **Kaizen Logistics Smart Package Monitoring & Tracking Dashboard** - overview of package movement, delivery performance, route tracking, and IoT temperature conditions.
+2. **Kaizen Logistics Prefecture Operations & Temperature Insights** - delivered-prefecture coverage, Top 10 package volume, Top 10 average temperature, Top 10 package density, and danger-zone package monitoring.
+3. **Kaizen Logistics IoT Sensor Reliability & Exception Monitoring** - RFID success, RFID at-risk packages, in-transit and not-delivered packages, temperature trends by journey stage, and packages requiring operational review.
+
+Recommended main dashboard story:
+
+- KPI cards summarize package volume, delivery rate, average temperature, and perishable packages.
+- Japan route map shows package movement across Japan.
+- Temperature condition by journey stage shows where temperature risks appear during the logistics flow.
+- Temperature condition distribution summarizes Ambient, Cool, and Danger Zone shares.
+- Filters allow users to inspect package ID, perishable status, final delivery status, event status, and event timestamp.
+
+Recommended Prefecture Insights story:
+
+- Delivered Prefectures counts the Japanese prefectures where Kaizen Logistics recorded deliveries in the dataset.
+- Top 10 views are used for readability and focused comparison across the most active delivery prefectures.
+- Tooltips disclose that charts are affected by filters and Top 10 regional selections.
+- Danger Zone Packages is a unique-package count for packages with at least one Danger Zone temperature reading in the current dashboard context.
+
+Recommended Sensor Reliability story:
+
+- KPI cards track In Transit, Not Delivered, Average RFID Success %, and RFID At-Risk Packages.
+- RFID Success Rate Over Time uses a 97% benchmark to distinguish On Target and Below Target time points.
+- Temperature Trend by Journey Stage & Delivery Status compares temperature behavior from order placement to final status.
+- Packages Requiring Operational Review ranks packages by combined risk signals such as delivery exception, Danger Zone reading, and RFID At-Risk label.
+
+## Tableau map setup notes
+
+Recommended map title:
+
+```text
+Japan Smart Shipment Route Map
+```
+
+Recommended dual-layer setup:
+
+### Route line layer
+
+```text
+Marks Type: Line
+Detail: map_path_id, package_id
+Path: map_path_order
+Color: muted gray or final_status
+Size: thin
+Opacity: 35% to 45%
+```
+
+### Event point layer
+
+```text
+Marks Type: Circle
+Color: event_status
+Detail: package_id, event_type
+Tooltip: package, event, location, timestamp, temperature, RFID, final status, exception reason
+```
+
+Recommended route line color for the main dashboard:
+
+```text
+#8A8A8A
+```
+
+This keeps the all-packages route map readable and prevents the map from overwhelming the dashboard.
+
+## Suggested Tableau color scheme
+
+### Base dashboard theme
+
+| Use | Hex |
+|---|---:|
+| Brand dark red | `#B00000` |
+| Dark maroon | `#7A0000` |
+| White panel | `#FFFFFF` |
+| Light gray background | `#E6E6E6` |
+| Medium gray border | `#C9C9C9` |
+| Dark text | `#333333` |
+
+### Temperature condition colors
+
+| Temperature Issue | Hex |
+|---|---:|
+| Ambient | `#BFC0C0` |
+| Cool | `#6C8EA4` |
+| Danger Zone | `#B00000` |
+
+### Event status colors
+
+| Event Status | Hex |
+|---|---:|
+| Order Placed | `#BFC0C0` |
+| Picked Up | `#D9A441` |
+| In Transit | `#A65E00` |
+| Out for Delivery | `#9E3D3F` |
+| Delivered | `#5E6F64` |
+| Not Delivered | `#B00000` |
+
+## Common problems and fixes
+
+### Python cannot connect to Ganache
+
+Check the RPC URL in the notebook. Ganache may use either `7545` or `8545` depending on the workspace.
+
+Try:
+
+```text
+http://127.0.0.1:7545
+```
+
+or:
+
+```text
+http://127.0.0.1:8545
+```
+
+Also confirm that Ganache is running before executing the notebook.
+
+### Contract address does not work
+
+Possible causes:
+
+- Ganache was restarted and the old contract no longer exists.
+- The notebook is pointing to a contract address from a previous chain session.
+- The ABI does not match the deployed contract.
+
+Fix:
+
+1. Redeploy the contract in Remix.
+2. Copy the new contract address.
+3. Confirm `contracts/abi.json` matches the deployed contract.
+4. Rerun the notebook from the contract setup cell.
 
 ### `Not authorized`
 
@@ -143,48 +417,58 @@ The notebook is sending transactions from the wrong account.
 
 Fix:
 
-1. Make sure Ganache is running.
-2. Confirm the owner account is unlocked.
-3. Set `CONTRACT_OWNER` in `.env` if needed.
+1. Make sure the deployed contract owner account is available in Ganache.
+2. Set the sender account to the deployer account.
+3. Rerun the contract setup cell.
 
-### `Storage limit reached`
+### Contract storage is already full
 
-The contract has reached `MAX_ENTRIES`.
+The smart contract has reached its maximum entries.
 
 Fix:
 
-1. Restart Ganache for a clean chain, or
-2. Redeploy the contract and update `CONTRACT_ADDRESS` in `.env`.
+1. Restart Ganache for a clean local chain.
+2. Redeploy the contract.
+3. Update the contract address in the notebook.
+4. Rerun the notebook from the start.
 
-### Duplicate rows are skipped
+### CSV-to-ledger validation fails
 
-This is expected. The notebook checks the exact `package_id + data_type + data_value` combination before writing.
+Check:
 
-If you want to test duplicate writes on purpose, set `ENABLE_DUPLICATE_WRITES=true` in `.env`. In that mode the notebook will stop skipping exact duplicates and will write them again.
+- source CSV file path,
+- column order,
+- blank or missing values,
+- whether the blockchain ledger was generated from the same source CSV,
+- whether package IDs were sorted consistently before comparison.
 
-## Resetting for a fresh test run
+### Tableau route map looks messy
 
-If you want to test again from a clean state:
+For the main dashboard:
 
-1. Stop Ganache.
-2. Restart Ganache.
-3. Redeploy the contract.
-4. Update `CONTRACT_ADDRESS` in `.env`.
-5. Rerun the notebook from Cell 1.
+- use thin gray route lines,
+- lower route line opacity,
+- keep event status colors on circle points,
+- remove package labels unless filtering to one package,
+- use the `Package Id` filter to inspect individual journeys.
 
-This is the only true way to clear all 500 entries, because the current contract does not include a reset or delete function.
+## Documentation maintenance checklist
 
-```mermaid
-flowchart TD
-	A[Need a clean test run] --> B[Stop Ganache]
-	B --> C[Restart Ganache]
-	C --> D[Redeploy Contract]
-	D --> E[Update CONTRACT_ADDRESS in .env]
-	E --> F[Rerun Notebook from Cell 1]
+Update these files when major workflow changes are made:
+
+```text
+README.md
+DEVELOPER_GUIDE.md
+docs/IMPROVEMENTS.md
+docs/tableau_storytelling_iot_sensors.md
 ```
 
-## Editing tips
+Update documentation when:
 
-- Keep environment-specific values in `.env`, not hardcoded in the notebook.
-- Keep changes small and rerun the edited notebook cell after each change.
-- When adding a new setting, document it here and in the README.
+- dataset filenames change,
+- notebook filenames change,
+- smart contract logic changes,
+- ABI path changes,
+- Tableau dashboard link changes,
+- output CSV/JSON filenames change,
+- dashboard story or layout changes.

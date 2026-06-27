@@ -21,6 +21,9 @@ This repository uses a lightweight GitFlow-style model:
 
 - When a notebook is changed, verify it executes successfully with `jupyter nbconvert --execute`.
 - Keep paired CSV/JSON assets in `IOT Data Simulation/` synchronized with notebook logic.
+- For blockchain-related contributions, continue using the source files and generated outputs inside `IOT Data Simulation/`.
+- For Tableau dashboard edits, use `assets/tableau_kaizen_logistics_tracking_events.csv`. This file is the Tableau-specific event-level dataset and is separate from the blockchain source CSV and the official Week 6 cleaned output.
+- Do not overwrite `assets/cleaned_iot_data.csv` only for Tableau experimentation. If dashboard-specific fields are needed, update the Tableau event-level CSV and document the change.
 
 ## Dependency lockfiles
 
