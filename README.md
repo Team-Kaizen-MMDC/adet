@@ -155,8 +155,8 @@ http://127.0.0.1:8545
 4. Create or open `IoTDataStorage.sol`.
 5. Use the latest code from `contracts/IoTDataStorage.sol`.
 6. Compile with Solidity `0.8.0` or compatible `0.8.x` version.
-7. Deploy using **External HTTP Provider** connected to Ganache.
-8. Copy the deployed contract address into the Milestone 1 notebook.
+7. Deploy using **Web3 Provider** connected to Ganache (not JavaScript VM).
+8. Copy the deployed contract address and update `CONTRACT_ADDRESS` in `.env`.
 9. Confirm that `contracts/abi.json` matches the deployed contract.
 
 ## Blockchain storage format

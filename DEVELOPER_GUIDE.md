@@ -107,10 +107,10 @@ http://127.0.0.1:8545
 5. Open or create `IoTDataStorage.sol`.
 6. Paste the latest contents from `contracts/IoTDataStorage.sol`.
 7. Compile using Solidity `0.8.0` or a compatible `0.8.x` compiler.
-8. Under **Deploy & Run Transactions**, select **External HTTP Provider**.
-9. Enter the Ganache RPC URL.
+8. Under **Deploy & Run Transactions**, select **Web3 Provider** (not JavaScript VM).
+9. Enter the Ganache RPC URL when prompted.
 10. Deploy the contract.
-11. Copy the deployed contract address into the Milestone 1 notebook.
+11. Copy the deployed contract address and update `CONTRACT_ADDRESS` in `.env`.
 12. Export or copy the latest ABI into `contracts/abi.json`.
 
 ## Smart contract storage format
@@ -400,16 +400,17 @@ Also confirm that Ganache is running before executing the notebook.
 
 Possible causes:
 
-- Ganache was restarted and the old contract no longer exists.
-- The notebook is pointing to a contract address from a previous chain session.
+- Ganache was restarted and the old contract no longer exists at that address.
+- The contract was deployed using Remix's **JavaScript VM** instead of **Web3 Provider**, so it never reached Ganache.
 - The ABI does not match the deployed contract.
 
 Fix:
 
-1. Redeploy the contract in Remix.
-2. Copy the new contract address.
-3. Confirm `contracts/abi.json` matches the deployed contract.
-4. Rerun the notebook from the contract setup cell.
+1. In Remix, set Environment to **Web3 Provider** and connect to `http://127.0.0.1:7545`.
+2. Redeploy `IoTDataStorage.sol` and copy the new contract address.
+3. Update `CONTRACT_ADDRESS` in `.env` with the new address.
+4. Confirm `contracts/abi.json` matches the deployed contract.
+5. Restart the notebook kernel and rerun from Cell 1 so `load_dotenv()` picks up the new address.
 
 ### `Not authorized`
 
